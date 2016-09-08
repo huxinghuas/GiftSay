@@ -1,16 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ui.activity.MainActivity">
+    android:orientation="vertical"
+    >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+    <FrameLayout
+        android:id="@+id/main_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        ></FrameLayout>
+
+    <RadioGroup
+        android:id="@+id/main_radio_grop"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        >
+        <RadioButton
+            android:id="@+id/main_home_rb"
+            android:drawableTop="@drawable/select_home_bg"
+            android:text="首页"
+            style="@style/radiobtn" />
+
+        <RadioButton
+           android:id="@+id/main_list_rb"
+            style="@style/radiobtn"
+            android:drawableTop="@drawable/select_list_bg"
+            android:text="榜单"
+            />
+
+        <RadioButton
+            android:id="@+id/main_class_category_rb"
+            style="@style/radiobtn"
+            android:text="分类"
+            android:drawableTop="@drawable/select_classification_bg"
+           />
+
+        <RadioButton
+            android:id="@+id/main_my_rb"
+            style="@style/radiobtn"
+            android:text="我的"
+            android:drawableTop="@drawable/select_my_bg"
+           />
+
+
+    </RadioGroup>
+
+</LinearLayout>

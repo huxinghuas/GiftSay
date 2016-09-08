@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 /**
  * Created by dllo on 16/9/8.
@@ -44,6 +45,12 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
     /**
      * 跳转传值
      */
+
+    protected  <T extends View> T byview(int resId){
+       return  (T)findViewById(resId);
+    }
+
+
 
     protected  void goTo(Context from,Class< ? extends  AbsBaseActivity> to,Bundle extras){
         startActivity(new Intent(from,to));
