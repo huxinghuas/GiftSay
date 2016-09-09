@@ -10,19 +10,21 @@
         android:id="@+id/main_frame_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="9"
         ></FrameLayout>
 
     <RadioGroup
         android:id="@+id/main_radio_grop"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal"
         >
         <RadioButton
             android:id="@+id/main_home_rb"
             android:drawableTop="@drawable/select_home_bg"
             android:text="首页"
+            android:textSize="10sp"
             style="@style/radiobtn" />
 
         <RadioButton
@@ -30,19 +32,22 @@
             style="@style/radiobtn"
             android:drawableTop="@drawable/select_list_bg"
             android:text="榜单"
+            android:textSize="10sp"
             />
 
         <RadioButton
             android:id="@+id/main_class_category_rb"
             style="@style/radiobtn"
             android:text="分类"
-            android:drawableTop="@drawable/select_classification_bg"
+            android:textSize="10sp"
+            android:drawableTop="@drawable/select_category_bg"
            />
 
         <RadioButton
             android:id="@+id/main_my_rb"
             style="@style/radiobtn"
             android:text="我的"
+            android:textSize="10sp"
             android:drawableTop="@drawable/select_my_bg"
            />
 

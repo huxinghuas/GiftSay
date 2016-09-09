@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import java.util.zip.Inflater;
+
 /**
  * Created by dllo on 16/9/8.
  */
@@ -45,6 +47,7 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
     /**
      * 跳转传值
      */
+
 
     protected  <T extends View> T byview(int resId){
        return  (T)findViewById(resId);

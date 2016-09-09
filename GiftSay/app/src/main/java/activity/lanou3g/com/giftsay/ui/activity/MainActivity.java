@@ -42,6 +42,7 @@ public class MainActivity extends AbsBaseActivity {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // 创建并初始化业务管理者
                 FragmentManager manager = getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
 
@@ -64,6 +65,6 @@ public class MainActivity extends AbsBaseActivity {
                 transaction.commit();
             }
         });
-        radioGroup.check(R.id.home_tv);
+        radioGroup.check(R.id.main_home_rb);
     }
 }
