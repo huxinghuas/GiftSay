@@ -8,31 +8,53 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="1"
-        android:background="#DC3443"
-        >
+        android:background="#DC3443">
+
         <TextView
             android:id="@+id/home_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/home_tab"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.8"
-        />
+        android:orientation="horizontal">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/home_tab"
+            android:layout_weight="8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:src="@mipmap/arrow_index_down"
+                />
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
 
 
     <android.support.v4.view.ViewPager
         android:id="@+id/home_vp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
-        ></android.support.v4.view.ViewPager>
-
-
-
+        android:layout_weight="8"/>
 
 
 </LinearLayout>

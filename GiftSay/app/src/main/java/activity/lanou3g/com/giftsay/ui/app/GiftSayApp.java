@@ -1,4 +1,4 @@
-package activity.lanou3g.com.giftsay.view;
+package activity.lanou3g.com.giftsay.ui.app;
 
 import android.app.Application;
 import android.content.Context;

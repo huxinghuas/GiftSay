@@ -25,6 +25,7 @@
             android:drawableTop="@drawable/select_home_bg"
             android:text="首页"
             android:textSize="10sp"
+            android:background="@null"
             style="@style/radiobtn" />
 
         <RadioButton
@@ -33,6 +34,7 @@
             android:drawableTop="@drawable/select_list_bg"
             android:text="榜单"
             android:textSize="10sp"
+            android:background="@null"
             />
 
         <RadioButton
@@ -41,6 +43,7 @@
             android:text="分类"
             android:textSize="10sp"
             android:drawableTop="@drawable/select_category_bg"
+            android:background="@null"
            />
 
         <RadioButton
@@ -49,6 +52,7 @@
             android:text="我的"
             android:textSize="10sp"
             android:drawableTop="@drawable/select_my_bg"
+            android:background="@null"
            />
 
 
