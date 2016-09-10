@@ -63,7 +63,7 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
     }
 
     /**
-     * 跳转bu传值
+     * 跳转不传值
      * @param from
      * @param to
      */
