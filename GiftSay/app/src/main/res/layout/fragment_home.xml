@@ -1,21 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
 
     <LinearLayout
+        android:weightSum="5"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="1"
         android:background="#DC3443">
 
-        <TextView
-            android:id="@+id/home_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:id="@+id/home_tv"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="礼物说"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                />
+
+            <LinearLayout
+                android:layout_weight="3.4"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="0dp"
+                android:background="@drawable/home_title_shape"
+                android:layout_gravity="center"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/icon_search_grey"/>
+                <TextView
+                    android:id="@+id/home_title_milde_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center"
+                    android:text="中秋佳节送好礼"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_weight="0.6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/btn_signin"/>
+
+
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -26,29 +76,24 @@
 
         <android.support.design.widget.TabLayout
             android:id="@+id/home_tab"
-            android:layout_weight="8"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            app:tabSelectedTextColor="#DC3443"
-            />
+            android:layout_weight="8"
+            app:tabSelectedTextColor="#DC3443" />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:gravity="center"
-            >
+            android:layout_weight="1"
+            android:gravity="center">
 
             <ImageView
-                android:layout_marginRight="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
 
-                android:src="@mipmap/arrow_index_down"
-                />
+                android:src="@mipmap/arrow_index_down" />
         </LinearLayout>
-
-
 
 
     </LinearLayout>
@@ -58,7 +103,7 @@
         android:id="@+id/home_vp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8.2"/>
+        android:layout_weight="8.2" />
 
 
 </LinearLayout>
