@@ -17,10 +17,5 @@
 
         />
 
-        <TextView
-            android:id="@+id/item_selective_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
 
-            />
 </LinearLayout>

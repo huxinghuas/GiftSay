@@ -1,6 +1,5 @@
 package activity.lanou3g.com.giftsay.ui.fragment;
 
-import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -13,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
+import activity.lanou3g.com.giftsay.modle.bean.GetUrl;
 import activity.lanou3g.com.giftsay.ui.adpter.HomeAdpter;
-import activity.lanou3g.com.giftsay.ui.app.GiftSayApp;
 
 /**
  * Created by dllo on 16/9/8.
@@ -47,7 +46,7 @@ public class HomeFragment extends AbsBaseFragment {
     @Override
     protected void initDatas() {
         // home页tab
-        initTabHome();
+        buildData();
         // 
         initGetNet();
     }
@@ -55,13 +54,24 @@ public class HomeFragment extends AbsBaseFragment {
     private void initGetNet() {
     }
 
-    private void initTabHome() {
+    private void buildData() {
         // 添加tablayout页面数据
         fragments = new ArrayList<>();
-        fragments.add(new SelectiveFragment());
-        for (int i = 0; i < 11; i++) {
-            fragments.add(new SendGirlFriendFragment());
-        }
+
+        fragments.add(SendGirlFriendFragment.newInstance(GetUrl.SEND_GIRLFREND));
+        fragments.add(SendGirlFriendFragment.newInstance(GetUrl.ONLIN_SHOP));
+        fragments.add(SendGirlFriendFragment.newInstance(GetUrl.CREATE_LIFE));
+        fragments.add(SendGirlFriendFragment.newInstance(GetUrl.SEND_BOYFREND));
+        fragments.add(SendGirlFriendFragment.newInstance(GetUrl.SEND_PARENTCE));
+        fragments.add(SendGirlFriendFragment.newInstance(GetUrl.SEND_COLLEGUE));
+        fragments.add(SendGirlFriendFragment.newInstance(GetUrl.SEND_BODY));
+        fragments.add(SendGirlFriendFragment.newInstance(GetUrl.SEND_DESIGN));
+        fragments.add(SendGirlFriendFragment.newInstance(GetUrl.THE_WIND));
+        fragments.add(SendGirlFriendFragment.newInstance(GetUrl.THE_EXIOC));
+        fragments.add(SendGirlFriendFragment.newInstance(GetUrl.FAN_SENCISE));
+        fragments.add(SendGirlFriendFragment.newInstance(GetUrl.THE_LOVELY));
+
+
 
 
         homeAdpter = new HomeAdpter(getChildFragmentManager(),fragments);

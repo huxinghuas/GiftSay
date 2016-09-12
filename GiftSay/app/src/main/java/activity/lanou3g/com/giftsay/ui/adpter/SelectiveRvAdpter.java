@@ -1,14 +1,12 @@
 package activity.lanou3g.com.giftsay.ui.adpter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -33,7 +31,7 @@ public class SelectiveRvAdpter  extends  RecyclerView.Adapter<SelectiveRvAdpter.
     public SelectiveRvHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.item_selective_rv, parent, false);
+        View view = inflater.inflate(R.layout.item_selective_recycleview, parent, false);
         SelectiveRvHolder holder = new SelectiveRvHolder(view);
         return holder;
 
@@ -57,7 +55,7 @@ public class SelectiveRvAdpter  extends  RecyclerView.Adapter<SelectiveRvAdpter.
         public SelectiveRvHolder(View itemView) {
             super(itemView);
             img = (ImageView) itemView.findViewById(R.id.item_selective_img);
-            Log.d("xxx", "shitu");
+
         }
 
 

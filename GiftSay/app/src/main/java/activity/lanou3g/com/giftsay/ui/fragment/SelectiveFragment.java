@@ -35,12 +35,12 @@ public class SelectiveFragment extends AbsBaseFragment {
 
     @Override
     protected int setLayoout() {
+
         return R.layout.fragment_selective;
     }
 
     @Override
     protected void initViews() {
-        showTv = byView(R.id.seletive_tv);
         recyclerView = byView(R.id.selective_rv);
     }
 
@@ -70,7 +70,7 @@ public class SelectiveFragment extends AbsBaseFragment {
         VolleyeInstance.getInstance().startRequest(dataUrl, new VolleyResult() {
             @Override
             public void success(String resultStr) {
-                showTv.setText(resultStr);
+                Log.d("SelectiveFragment", resultStr);
             }
 
             @Override
