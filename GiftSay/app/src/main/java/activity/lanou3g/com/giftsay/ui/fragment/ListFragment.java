@@ -10,12 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
-import activity.lanou3g.com.giftsay.ui.activity.DayRecomedFragment;
 import activity.lanou3g.com.giftsay.ui.adpter.ListedAdpter;
 
 /**
  * Created by dllo on 16/9/8.
- * 这是榜单的适配器
+ * 榜单碎片一级页面
  */
 public class ListFragment extends AbsBaseFragment {
 

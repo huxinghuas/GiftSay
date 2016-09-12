@@ -4,11 +4,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/startegy_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="哈哈"
-        />
 
-</LinearLayout>
+
+
+       <TextView
+           android:id="@+id/startegy_tv"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="5dp"
+           android:text="中秋佳节送好礼"
+           android:textColor="#a79e9e"
+           android:textSize="14sp"
+           />
+
+   </LinearLayout>
+
+
+
+
+
+
+

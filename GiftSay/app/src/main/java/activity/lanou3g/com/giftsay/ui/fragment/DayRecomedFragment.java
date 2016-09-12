@@ -1,4 +1,4 @@
-package activity.lanou3g.com.giftsay.ui.activity;
+package activity.lanou3g.com.giftsay.ui.fragment;
 
 import android.widget.TextView;
 
@@ -7,6 +7,7 @@ import activity.lanou3g.com.giftsay.ui.fragment.AbsBaseFragment;
 
 /**
  * Created by dllo on 16/9/9.
+ * 每日精品页面
  */
 public class DayRecomedFragment extends AbsBaseFragment {
     private TextView showTv;

@@ -6,6 +6,7 @@ import activity.lanou3g.com.giftsay.R;
 
 /**
  * Created by dllo on 16/9/10.
+ * 这是单品页面
  */
 public class SingleProductFragment extends  AbsBaseFragment {
 

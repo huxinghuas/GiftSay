@@ -3,16 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#DC3443"
     android:gravity="center"
     >
-
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="单品"
-    android:textColor="#ffffff"
+    android:text="20sp"
     android:textSize="20sp"
     />
-
 </LinearLayout>

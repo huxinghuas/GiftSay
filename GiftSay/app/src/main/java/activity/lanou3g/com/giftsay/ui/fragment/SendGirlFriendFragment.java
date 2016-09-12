@@ -6,6 +6,7 @@ import activity.lanou3g.com.giftsay.R;
 
 /**
  * Created by dllo on 16/9/9.
+ * 送女友页面
  */
 public class SendGirlFriendFragment extends  AbsBaseFragment {
 
