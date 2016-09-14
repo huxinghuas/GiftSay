@@ -1,6 +1,7 @@
 package activity.lanou3g.com.giftsay.ui.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,7 +57,7 @@ public class SendGirlFriendFragment extends  AbsBaseFragment {
         VolleyeInstance.getInstance().startRequest(url, new VolleyResult() {
             @Override
             public void success(String resultStr) {
-                Toast.makeText(context, resultStr, Toast.LENGTH_LONG).show();
+                Log.d("SendGirlFriendFragment", resultStr);
             }
 
             @Override

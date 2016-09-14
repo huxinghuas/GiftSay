@@ -57,7 +57,7 @@ public class HomeFragment extends AbsBaseFragment {
     private void buildData() {
         // 添加tablayout页面数据
         fragments = new ArrayList<>();
-
+        fragments.add(new SelectiveFragment());
         fragments.add(SendGirlFriendFragment.newInstance(GetUrl.SEND_GIRLFREND));
         fragments.add(SendGirlFriendFragment.newInstance(GetUrl.ONLIN_SHOP));
         fragments.add(SendGirlFriendFragment.newInstance(GetUrl.CREATE_LIFE));
@@ -73,12 +73,13 @@ public class HomeFragment extends AbsBaseFragment {
 
 
 
-
         homeAdpter = new HomeAdpter(getChildFragmentManager(),fragments);
         homeVp.setAdapter(homeAdpter);
         homeTab.setupWithViewPager(homeVp);
         homeTab.setTabMode(TabLayout.MODE_SCROLLABLE);
         View v = getLayoutInflater(getArguments()).inflate(R.layout.item_home_tab,null);
+
+
         homeTab.getTabAt(0).setText("精品");
         homeTab.getTabAt(1).setText("送女票");
         homeTab.getTabAt(2).setText("海淘");
