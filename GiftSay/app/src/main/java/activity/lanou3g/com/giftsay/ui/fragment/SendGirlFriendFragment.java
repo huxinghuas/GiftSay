@@ -8,10 +8,15 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+
+import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
+import activity.lanou3g.com.giftsay.modle.bean.SendGirlFrendBean;
 import activity.lanou3g.com.giftsay.modle.net.VolleyResult;
 import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
+import activity.lanou3g.com.giftsay.ui.adpter.SendGirlFrendAdapter;
 import activity.lanou3g.com.giftsay.ui.app.GiftSayApp;
 
 /**
@@ -23,6 +28,7 @@ public class SendGirlFriendFragment extends  AbsBaseFragment {
     private ListView listView;
     private String url;
     private RequestQueue queue;
+    private SendGirlFrendAdapter girlFrendAdapter;
 
     public static SendGirlFriendFragment newInstance(String url) {
 
@@ -53,11 +59,19 @@ public class SendGirlFriendFragment extends  AbsBaseFragment {
         listView.setTag(this.url);
         // 开始网络请求
 
-        queue = Volley.newRequestQueue(GiftSayApp.getContext());
+        girlFrendAdapter = new SendGirlFrendAdapter(context);
+
+//        queue = Volley.newRequestQueue(GiftSayApp.getContext());
         VolleyeInstance.getInstance().startRequest(url, new VolleyResult() {
             @Override
             public void success(String resultStr) {
                 Log.d("SendGirlFriendFragment", resultStr);
+                // 解析
+                Gson gson = new Gson();
+                SendGirlFrendBean bean = gson.fromJson(resultStr,SendGirlFrendBean.class);
+                List<SendGirlFrendBean.DataBean.ItemsBean> datas =  bean.getData().getItems();
+                girlFrendAdapter.setDatas(datas);
+                listView.setAdapter(girlFrendAdapter);
             }
 
             @Override
@@ -67,7 +81,7 @@ public class SendGirlFriendFragment extends  AbsBaseFragment {
         });
 
 
-        //解析
+
 
 
 

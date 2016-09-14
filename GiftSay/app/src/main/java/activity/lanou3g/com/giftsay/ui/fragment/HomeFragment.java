@@ -43,6 +43,7 @@ public class HomeFragment extends AbsBaseFragment {
 
     }
 
+
     @Override
     protected void initDatas() {
         // home页tab

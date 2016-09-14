@@ -1,13 +1,11 @@
 package activity.lanou3g.com.giftsay.ui.adpter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -16,37 +14,34 @@ import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
 import activity.lanou3g.com.giftsay.modle.bean.SelectiveLvBean;
+import activity.lanou3g.com.giftsay.modle.bean.SendGirlFrendBean;
 import activity.lanou3g.com.giftsay.tools.ScreenSizeUtil;
 
 /**
- * Created by dllo on 16/9/12.
- * 精选页面->listView->适配器
+ * Created by dllo on 16/9/14.
  */
-public class SelectiveLvAdapter extends BaseAdapter {
-    private List<SelectiveLvBean.DataBean.ItemsBean> datas;
+public class SendGirlFrendAdapter extends BaseAdapter {
 
     private Context context;
+    private List<SendGirlFrendBean.DataBean.ItemsBean> datas;
 
-    public SelectiveLvAdapter(Context context) {
+    public SendGirlFrendAdapter(Context context) {
         this.context = context;
     }
 
-    public void setDatas(List<SelectiveLvBean.DataBean.ItemsBean> datas) {
+    public void setDatas(List<SendGirlFrendBean.DataBean.ItemsBean> datas) {
         this.datas = datas;
         notifyDataSetChanged();
     }
 
-
     @Override
     public int getCount() {
         return datas == null ? 0 : datas.size();
-
     }
 
     @Override
     public Object getItem(int position) {
-        return datas == null ? null : datas.get(position);
-
+        return datas == null ? null :datas.get(position);
     }
 
     @Override
@@ -56,39 +51,34 @@ public class SelectiveLvAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         MyViewHolder holder = null;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_selective_listview, parent, false);
             holder = new MyViewHolder(convertView);
-           int height  = ScreenSizeUtil.getScreenHeight(context);ViewGroup.LayoutParams params = convertView.getLayoutParams();
-           params.height = (int) (height/2.12);
+            int height  = ScreenSizeUtil.getScreenHeight(context);
+            ViewGroup.LayoutParams params = convertView.getLayoutParams();
+            params.height = (int) (height/2.12);
             convertView.setLayoutParams(params);
             convertView.setTag(holder);
         } else {
             holder = (MyViewHolder) convertView.getTag();
         }
 
-//        ViewGroup.LayoutParams params = convertView.getLayoutParams();
-//        params.height = 560;
-//        convertView.setLayoutParams(params);
+        SendGirlFrendBean.DataBean.ItemsBean bean = datas.get(position);
+        if(bean.getColumn() != null && bean.getAuthor() != null){
+            holder.show_first_line_left_tv.setText(bean.getColumn().getCategory());
+            holder.show_first_line_left_second_tv.setText(bean.getColumn().getTitle());
+            Picasso.with(context).load(bean.getAuthor().getAvatar_url()).into(holder.show_first_line_right_img);
+            holder.show_first_line_rihgt_tv.setText(bean.getAuthor().getNickname());
+            Picasso.with(context).load(bean.getCover_image_url()).into(holder.show_center_img);
+            holder.show_three_line_left_tv.setText(bean.getTitle());
+            holder.show_three_line_right_tv.setText(bean.getLikes_count()+"");
 
-        SelectiveLvBean.DataBean.ItemsBean bean = datas.get(position);
-       if(bean.getColumn() != null && bean.getAuthor() != null){
-           holder.show_first_line_left_tv.setText(bean.getColumn().getCategory());
-           holder.show_first_line_left_second_tv.setText(bean.getColumn().getTitle());
-           Picasso.with(context).load(bean.getAuthor().getAvatar_url()).into(holder.show_first_line_right_img);
-           holder.show_first_line_rihgt_tv.setText(bean.getAuthor().getNickname());
-           Picasso.with(context).load(bean.getCover_image_url()).into(holder.show_center_img);
-           holder.show_three_line_left_tv.setText(bean.getTitle());
-           holder.show_three_line_right_tv.setText(bean.getLikes_count()+"");
-
-       }
-
-
-
+        }
         return convertView;
     }
+
+
 
     class MyViewHolder {
 
@@ -112,5 +102,10 @@ public class SelectiveLvAdapter extends BaseAdapter {
         }
 
     }
+
+
+
+
+
 
 }
