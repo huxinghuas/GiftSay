@@ -2,15 +2,17 @@ package activity.lanou3g.com.giftsay.ui.adpter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
+import activity.lanou3g.com.giftsay.modle.bean.SelectiveRvBean;
 
 
 /**
@@ -19,12 +21,17 @@ import activity.lanou3g.com.giftsay.R;
  */
 public class SelectiveRvAdpter  extends  RecyclerView.Adapter<SelectiveRvAdpter.SelectiveRvHolder> {
 
-    private List<Integer> datas;
-    private Context context;
 
-    public SelectiveRvAdpter(List<Integer> datas, Context context) {
-        this.datas = datas;
+    private Context context;
+    private List<SelectiveRvBean.DataBean.SecondaryBannersBean> datas;
+
+    public SelectiveRvAdpter(Context context) {
         this.context = context;
+    }
+
+    public void setDatas(List<SelectiveRvBean.DataBean.SecondaryBannersBean> datas) {
+        this.datas = datas;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -40,7 +47,10 @@ public class SelectiveRvAdpter  extends  RecyclerView.Adapter<SelectiveRvAdpter.
 
     @Override
     public void onBindViewHolder(SelectiveRvHolder holder, int position) {
-          holder.img.setImageResource(datas.get(position));
+
+        SelectiveRvBean.DataBean.SecondaryBannersBean bean = datas.get(position);
+
+        Picasso.with(context).load(bean.getImage_url()).into(holder.img);
     }
 
     @Override
@@ -54,7 +64,7 @@ public class SelectiveRvAdpter  extends  RecyclerView.Adapter<SelectiveRvAdpter.
 
         public SelectiveRvHolder(View itemView) {
             super(itemView);
-            img = (ImageView) itemView.findViewById(R.id.item_selective_img);
+            img = (ImageView) itemView.findViewById(R.id.item_selective_rv_img);
 
         }
 

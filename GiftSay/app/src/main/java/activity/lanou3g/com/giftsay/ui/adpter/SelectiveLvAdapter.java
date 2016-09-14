@@ -20,6 +20,7 @@ import activity.lanou3g.com.giftsay.tools.ScreenSizeUtil;
 
 /**
  * Created by dllo on 16/9/12.
+ * 精选页面->listView->适配器
  */
 public class SelectiveLvAdapter extends BaseAdapter {
     private List<SelectiveLvBean.DataBean.ItemsBean> datas;

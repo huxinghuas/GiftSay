@@ -19,6 +19,7 @@ import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
 import activity.lanou3g.com.giftsay.modle.bean.SelectiveLvBean;
+import activity.lanou3g.com.giftsay.modle.bean.SelectiveRvBean;
 import activity.lanou3g.com.giftsay.modle.net.VolleyResult;
 import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
 import activity.lanou3g.com.giftsay.ui.adpter.SelectiveLvAdapter;
@@ -36,8 +37,7 @@ public class SelectiveFragment extends AbsBaseFragment {
     private RequestQueue queue;
     // 定义并初始化rv适配器和集合
     private RecyclerView recyclerView;
-    private SelectiveRvAdpter adpter;
-    private List<Integer> datas;
+    private SelectiveRvAdpter rvadpter;
    // 定义并初始化lv适配器和集合;
     private MyListView listview;
     private SelectiveLvAdapter lvadpter;
@@ -45,7 +45,7 @@ public class SelectiveFragment extends AbsBaseFragment {
 
 
     String datalunbo = "http://api.liwushuo.com/v2/banners";
-    String dataRv ="";
+    String dataRv ="http://api.liwushuo.com/v2/secondary_banners?gender=1&generation=2";
     String dataLv ="http://api.liwushuo.com/v2/channels/101/items_v2?ad=2&gender=1&generation=2&limit=20&offset=0";
 
 
@@ -64,8 +64,8 @@ public class SelectiveFragment extends AbsBaseFragment {
 
     @Override
     protected void initDatas() {
-         // 获取网络数据的方法
-         getIntent();
+         // Rv获取网络数据的方法并解析数据
+        geRvtIntent();
         // 横向图片滑动
         getTwoRecycleView();
         // 底部listView
@@ -80,18 +80,42 @@ public class SelectiveFragment extends AbsBaseFragment {
 
     }
 
-    private void getTwoRecycleView() {  datas = new ArrayList<>();
+    private void getTwoRecycleView() {
 
-        for (int i = 0; i < 10; i++) {
-            datas.add(R.mipmap.ic_launcherss);
-        }
-        adpter = new SelectiveRvAdpter(datas, context);
-        recyclerView.setAdapter(adpter);
-        LinearLayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(manager);
+        rvadpter = new SelectiveRvAdpter(context);
+        //获取网络
+        queue = Volley.newRequestQueue(GiftSayApp.getContext());
+        VolleyeInstance.getInstance().startRequest(dataRv, new VolleyResult() {
+            @Override
+            public void success(String resultStr) {
+                Log.d("SelectiveFragmentRV", resultStr);
+                // 解析
+                Gson gson = new Gson();
+                SelectiveRvBean   rvBean = gson.fromJson(resultStr,SelectiveRvBean.class);
+                List<SelectiveRvBean.DataBean.SecondaryBannersBean> datas = rvBean.getData().getSecondary_banners();
+                Log.d("SelectiveFragmentRv", "datas.size():" + datas.size());
+                rvadpter.setDatas(datas);
+                recyclerView.setAdapter(rvadpter);
+                LinearLayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+                 recyclerView.setLayoutManager(manager);
+
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
+//        for (int i = 0; i < 10; i++) {
+//            datas.add(R.mipmap.ic_launcherss);
+//        }
+//        adpter = new SelectiveRvAdpter(datas, context);
+//        recyclerView.setAdapter(adpter);
+//        LinearLayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+//        recyclerView.setLayoutManager(manager);
     }
 
-    private void getIntent() {
+    private void geRvtIntent() {
 
          lvadpter = new SelectiveLvAdapter(context);
 
@@ -101,7 +125,7 @@ public class SelectiveFragment extends AbsBaseFragment {
             @Override
             public void success(String resultStr) {
                 // 获取网络
-                Log.d("SelectiveFragment", resultStr);
+                Log.d("SelectiveFragmentRv", resultStr);
                 // 解析
                 Gson gson = new Gson();
                 SelectiveLvBean  lvbean = gson.fromJson(resultStr,SelectiveLvBean.class);
