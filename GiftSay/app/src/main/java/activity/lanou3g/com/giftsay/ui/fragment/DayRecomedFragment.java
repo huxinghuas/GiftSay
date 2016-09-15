@@ -1,10 +1,22 @@
 package activity.lanou3g.com.giftsay.ui.fragment;
 
+import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
+import java.util.List;
+
 import activity.lanou3g.com.giftsay.R;
+import activity.lanou3g.com.giftsay.modle.bean.DayRecomedBean;
+import activity.lanou3g.com.giftsay.modle.net.VolleyResult;
+import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
+import activity.lanou3g.com.giftsay.ui.adpter.DayRecomedAdpter;
 import activity.lanou3g.com.giftsay.ui.fragment.AbsBaseFragment;
 
 /**
@@ -13,6 +25,18 @@ import activity.lanou3g.com.giftsay.ui.fragment.AbsBaseFragment;
  */
 public class DayRecomedFragment extends AbsBaseFragment {
     private RecyclerView dayRv;
+    private String url;
+    private DayRecomedAdpter adpter;
+
+    public static DayRecomedFragment newInstance(String url) {
+
+        Bundle args = new Bundle();
+        args.putString("url",url);
+        DayRecomedFragment fragment = new DayRecomedFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     protected int setLayoout() {
         return R.layout.fragment_day_recomend;
@@ -25,6 +49,34 @@ public class DayRecomedFragment extends AbsBaseFragment {
 
     @Override
     protected void initDatas() {
+        // 取值
+        Bundle bundle = getArguments();
+        this.url = bundle.getString("url");
+        dayRv.setTag(this.url);
+
+        adpter = new DayRecomedAdpter(context);
+
+        // 获取网络数据
+        VolleyeInstance.getInstance().startRequest(url, new VolleyResult() {
+            @Override
+            public void success(String resultStr) {
+                Log.d("dfd", resultStr);
+                // 解析
+                Gson gson = new Gson();
+                DayRecomedBean bean = gson.fromJson(resultStr,DayRecomedBean.class);
+                List<DayRecomedBean.DataBean.ItemsBean> datas = bean.getData().getItems();
+                Log.d("DayRecomedFragment", "datas.size():" + datas.size());
+                adpter.setDatas(datas);
+                GridLayoutManager manager = new GridLayoutManager(context,2);
+                dayRv.setLayoutManager(manager);
+                dayRv.setAdapter(adpter);
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
 
     }
 }

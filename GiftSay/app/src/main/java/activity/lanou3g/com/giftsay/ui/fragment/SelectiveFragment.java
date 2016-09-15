@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -32,7 +33,7 @@ import activity.lanou3g.com.giftsay.view.MyListView;
  * 精品页面
  */
 public class SelectiveFragment extends AbsBaseFragment {
-    private TextView showTv;
+    private LinearLayout drawerView;
 
     private RequestQueue queue;
     // 定义并初始化rv适配器和集合
@@ -106,13 +107,7 @@ public class SelectiveFragment extends AbsBaseFragment {
 
             }
         });
-//        for (int i = 0; i < 10; i++) {
-//            datas.add(R.mipmap.ic_launcherss);
-//        }
-//        adpter = new SelectiveRvAdpter(datas, context);
-//        recyclerView.setAdapter(adpter);
-//        LinearLayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
-//        recyclerView.setLayoutManager(manager);
+
     }
 
     private void geRvtIntent() {

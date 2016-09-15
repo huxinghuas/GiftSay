@@ -61,8 +61,9 @@ public class SelectiveLvAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_selective_listview, parent, false);
             holder = new MyViewHolder(convertView);
-           int height  = ScreenSizeUtil.getScreenHeight(context);ViewGroup.LayoutParams params = convertView.getLayoutParams();
-           params.height = (int) (height/2.12);
+            int height = ScreenSizeUtil.getScreenHeight(context);
+            ViewGroup.LayoutParams params = convertView.getLayoutParams();
+            params.height = (int) (height / 2.12);
             convertView.setLayoutParams(params);
             convertView.setTag(holder);
         } else {
@@ -74,17 +75,16 @@ public class SelectiveLvAdapter extends BaseAdapter {
 //        convertView.setLayoutParams(params);
 
         SelectiveLvBean.DataBean.ItemsBean bean = datas.get(position);
-       if(bean.getColumn() != null && bean.getAuthor() != null){
-           holder.show_first_line_left_tv.setText(bean.getColumn().getCategory());
-           holder.show_first_line_left_second_tv.setText(bean.getColumn().getTitle());
-           Picasso.with(context).load(bean.getAuthor().getAvatar_url()).into(holder.show_first_line_right_img);
-           holder.show_first_line_rihgt_tv.setText(bean.getAuthor().getNickname());
-           Picasso.with(context).load(bean.getCover_image_url()).into(holder.show_center_img);
-           holder.show_three_line_left_tv.setText(bean.getTitle());
-           holder.show_three_line_right_tv.setText(bean.getLikes_count()+"");
+        if (bean.getColumn() != null && bean.getAuthor() != null) {
+            holder.show_first_line_left_tv.setText(bean.getColumn().getCategory());
+            holder.show_first_line_left_second_tv.setText(bean.getColumn().getTitle());
+            Picasso.with(context).load(bean.getAuthor().getAvatar_url()).into(holder.show_first_line_right_img);
+            holder.show_first_line_rihgt_tv.setText(bean.getAuthor().getNickname());
+            Picasso.with(context).load(bean.getCover_image_url()).into(holder.show_center_img);
+            holder.show_three_line_left_tv.setText(bean.getTitle());
+            holder.show_three_line_right_tv.setText(bean.getLikes_count() + "");
 
-       }
-
+        }
 
 
         return convertView;

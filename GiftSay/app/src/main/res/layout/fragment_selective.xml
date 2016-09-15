@@ -5,7 +5,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
@@ -18,16 +18,13 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="150dp"
                 android:src="@mipmap/ic_huoying" />
 
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#f03" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -72,21 +69,20 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginBottom="3dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="3dp"
                     android:background="#ededed"
                     android:text="    9月1日 星期日    "
-                    android:textSize="15sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:layout_marginTop="5dp"
                     android:layout_below="@+id/select_four_item_time"
                     android:layout_centerHorizontal="true"
                     android:text="下次更新8:00"
                     android:textColor="#f03"
-                    android:textSize="10sp"
+                    android:textSize="8sp"
                     />
 
 

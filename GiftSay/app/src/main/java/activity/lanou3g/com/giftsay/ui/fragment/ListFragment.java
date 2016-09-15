@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
+import activity.lanou3g.com.giftsay.modle.bean.GetUrl;
 import activity.lanou3g.com.giftsay.ui.adpter.ListedAdpter;
 
 /**
@@ -40,9 +41,10 @@ public class ListFragment extends AbsBaseFragment {
     protected void initDatas() {
         // 添加碎片(每日推荐视图)
         fragments = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            fragments.add(new DayRecomedFragment());
-        }
+        fragments.add(DayRecomedFragment.newInstance(GetUrl.EVERY_DAY));
+        fragments.add(DayRecomedFragment.newInstance(GetUrl.TOP_ONE));
+        fragments.add(DayRecomedFragment.newInstance(GetUrl.ORIGINL));
+        fragments.add(DayRecomedFragment.newInstance(GetUrl.NEW_START));
 
         adapter = new ListedAdpter(getChildFragmentManager(),fragments);
         listVp.setAdapter(adapter);

@@ -31,7 +31,6 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
      * 设置布局文件
      * @return
      */
-
     protected abstract int setLayout();
 
     /**
@@ -47,8 +46,6 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
     /**
      * 跳转传值
      */
-
-
     protected  <T extends View> T byview(int resId){
        return  (T)findViewById(resId);
     }
@@ -67,7 +64,6 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
      * @param from
      * @param to
      */
-
     protected  void goTo(Context from,Class< ? extends  AbsBaseActivity> to){
         startActivity(new Intent(from,to));
     }
