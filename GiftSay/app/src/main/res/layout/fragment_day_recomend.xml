@@ -6,6 +6,7 @@
     android:weightSum="5">
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -17,8 +18,11 @@
             android:layout_weight="2">
 
             <ImageView
+                android:id="@+id/dayrecomd_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:scaleType="fitXY"
                 android:src="@mipmap/ic_launcherss" />
         </LinearLayout>
 

@@ -17,14 +17,17 @@
         android:id="@+id/main_radio_grop"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.9"
         android:orientation="horizontal"
+        android:gravity="center"
         >
         <RadioButton
             android:id="@+id/main_home_rb"
             android:layout_marginTop="5dp"
+            android:drawablePadding="-10dp"
             android:drawableTop="@drawable/select_home_bg"
             android:text="首页"
+            android:textColor="@color/select_first_page_color_bg"
             android:textSize="10sp"
             android:background="@null"
             style="@style/radiobtn" />
@@ -32,6 +35,7 @@
         <RadioButton
            android:id="@+id/main_list_rb"
             style="@style/radiobtn"
+            android:drawablePadding="-10dp"
             android:layout_marginTop="5dp"
             android:drawableTop="@drawable/select_list_bg"
             android:text="榜单"
@@ -43,6 +47,7 @@
             android:id="@+id/main_class_category_rb"
             android:layout_marginTop="5dp"
             style="@style/radiobtn"
+            android:drawablePadding="-10dp"
             android:text="分类"
             android:textSize="10sp"
             android:drawableTop="@drawable/select_category_bg"
@@ -53,6 +58,7 @@
             android:id="@+id/main_my_rb"
             android:layout_marginTop="5dp"
             style="@style/radiobtn"
+            android:drawablePadding="-10dp"
             android:text="我的"
             android:textSize="10sp"
             android:drawableTop="@drawable/select_my_bg"

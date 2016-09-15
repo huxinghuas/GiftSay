@@ -12,6 +12,7 @@ import activity.lanou3g.com.giftsay.R;
 
 /**
  * Created by dllo on 16/9/8.
+ * 我的页面
  */
 public class MyFragment extends AbsBaseFragment implements RadioGroup.OnCheckedChangeListener {
 

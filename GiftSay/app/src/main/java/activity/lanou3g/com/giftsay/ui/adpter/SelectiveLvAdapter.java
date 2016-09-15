@@ -70,9 +70,7 @@ public class SelectiveLvAdapter extends BaseAdapter {
             holder = (MyViewHolder) convertView.getTag();
         }
 
-//        ViewGroup.LayoutParams params = convertView.getLayoutParams();
-//        params.height = 560;
-//        convertView.setLayoutParams(params);
+
 
         SelectiveLvBean.DataBean.ItemsBean bean = datas.get(position);
         if (bean.getColumn() != null && bean.getAuthor() != null) {

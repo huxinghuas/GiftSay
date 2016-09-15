@@ -1,16 +1,25 @@
 package activity.lanou3g.com.giftsay.ui.fragment;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
+import activity.lanou3g.com.giftsay.modle.bean.DayRecomedBean;
 import activity.lanou3g.com.giftsay.modle.bean.GetUrl;
+import activity.lanou3g.com.giftsay.modle.net.VolleyResult;
+import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
 import activity.lanou3g.com.giftsay.ui.adpter.ListedAdpter;
 
 /**
@@ -24,6 +33,20 @@ public class ListFragment extends AbsBaseFragment {
     private ListedAdpter adapter;
     private TabLayout listTab;
     private ViewPager listVp;
+    private String url;
+
+
+
+    public static ListFragment newInstance(String url) {
+
+        Bundle args = new Bundle();
+        args.putString("url",url);
+        ListFragment fragment = new ListFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
     @Override
     protected int setLayoout() {
         return R.layout.fragment_list;
@@ -54,6 +77,15 @@ public class ListFragment extends AbsBaseFragment {
         listTab.getTabAt(1).setText("TOP100");
         listTab.getTabAt(2).setText("独立原创榜");
         listTab.getTabAt(3).setText("新星榜");
+
+
+//
+//        Bundle bundle = getArguments();
+//        this.url = bundle.getString("url");
+//        showTv.setText(this.url);
+
+
+
 
     }
 }

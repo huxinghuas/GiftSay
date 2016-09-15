@@ -5,10 +5,12 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -27,6 +29,7 @@ public class DayRecomedFragment extends AbsBaseFragment {
     private RecyclerView dayRv;
     private String url;
     private DayRecomedAdpter adpter;
+    private ImageView imageView;
 
     public static DayRecomedFragment newInstance(String url) {
 
@@ -45,6 +48,7 @@ public class DayRecomedFragment extends AbsBaseFragment {
     @Override
     protected void initViews() {
       dayRv = byView(R.id.day_recomed_rv);
+        imageView = byView(R.id.dayrecomd_img);
     }
 
     @Override
@@ -65,6 +69,8 @@ public class DayRecomedFragment extends AbsBaseFragment {
                 Gson gson = new Gson();
                 DayRecomedBean bean = gson.fromJson(resultStr,DayRecomedBean.class);
                 List<DayRecomedBean.DataBean.ItemsBean> datas = bean.getData().getItems();
+
+                Picasso.with(context).load(bean.getData().getCover_image()).into(imageView);
                 Log.d("DayRecomedFragment", "datas.size():" + datas.size());
                 adpter.setDatas(datas);
                 GridLayoutManager manager = new GridLayoutManager(context,2);
