@@ -10,7 +10,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="135dp"
             android:layout_marginTop="3dp"
             android:layout_weight="2.5"
             >
@@ -26,8 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_gravity="bottom|center"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="100dp"
+                android:layout_marginLeft="105dp"
                 android:orientation="horizontal"/>
 
         </FrameLayout>
@@ -61,8 +60,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="95dp"
-                android:layout_marginRight="95dp">
+                android:layout_marginLeft="120dp"
+                android:layout_marginRight="120dp">
 
                 <View
                     android:layout_width="match_parent"
@@ -90,7 +89,7 @@
                     android:layout_centerHorizontal="true"
                     android:text="下次更新8:00"
                     android:textColor="#f03"
-                    android:textSize="8sp"
+                    android:textSize="10sp"
                     />
 
 

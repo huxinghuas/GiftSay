@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center|bottom">
+        android:gravity="center">
 
 
         <LinearLayout
@@ -34,7 +34,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="礼物帮兄弟"
-                android:textSize="14sp" />
+                android:textColor="#202020"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -49,7 +50,8 @@
                 android:id="@+id/selective_lv_first_line_right_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_margin="12dp"
+                android:textSize="12sp"
                 android:text="礼帮助" />
 
             <ImageView
@@ -112,6 +114,7 @@
                     android:maxEms="10"
                     android:maxLines="1"
                     android:minLines="1"
+                    android:textColor="#050505"
                     android:text="异地保鲜恋"
                     android:textSize="15sp" />
 
@@ -130,7 +133,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginRight="10dp"
-                    android:src="@mipmap/ic_launcherss" />
+                    android:src="@drawable/select_feed_bg"/>
 
                 <TextView
                     android:id="@+id/selectiver_lv_three_right_tv"

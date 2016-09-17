@@ -1,5 +1,6 @@
 package activity.lanou3g.com.giftsay.ui.fragment;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -23,6 +24,16 @@ public class CategoryFragment extends AbsBaseFragment {
     private List<Fragment> fragments;
     private TabLayout categoryTab;
     private ViewPager categoryVp;
+    private String url;
+
+    public static CategoryFragment newInstance(String url) {
+
+        Bundle args = new Bundle();
+        args.putString("url",url);
+        CategoryFragment fragment = new CategoryFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     protected int setLayoout() {
@@ -52,5 +63,8 @@ public class CategoryFragment extends AbsBaseFragment {
         categoryTab.getTabAt(0).setText("攻略");
         categoryTab.getTabAt(1).setText("单品");
 
+
+        Bundle bundle  = getArguments();
+        this.url = bundle.getString("url");
     }
 }

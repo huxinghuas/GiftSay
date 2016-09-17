@@ -13,6 +13,7 @@ import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
 import activity.lanou3g.com.giftsay.modle.bean.SelectiveRvBean;
+import activity.lanou3g.com.giftsay.tools.ScreenSizeUtil;
 
 
 /**
@@ -40,6 +41,14 @@ public class SelectiveRvAdpter  extends  RecyclerView.Adapter<SelectiveRvAdpter.
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.item_selective_recycleview, parent, false);
         SelectiveRvHolder holder = new SelectiveRvHolder(view);
+        // 用工具类分别适配高度和宽度
+        int height  = ScreenSizeUtil.getScreenHeight(context);
+        int weight = ScreenSizeUtil.getScreenWidth(context);
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        params.height = (int)(height/6) ;
+        params.width = (int)(weight/4);
+        view.setLayoutParams(params);
+
         return holder;
 
     }

@@ -63,7 +63,7 @@ public class SelectiveLvAdapter extends BaseAdapter {
             holder = new MyViewHolder(convertView);
             int height = ScreenSizeUtil.getScreenHeight(context);
             ViewGroup.LayoutParams params = convertView.getLayoutParams();
-            params.height = (int) (height / 2.12);
+            params.height = (int) (height / 2);
             convertView.setLayoutParams(params);
             convertView.setTag(holder);
         } else {

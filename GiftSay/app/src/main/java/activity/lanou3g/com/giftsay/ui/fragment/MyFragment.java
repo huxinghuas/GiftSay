@@ -1,5 +1,6 @@
 package activity.lanou3g.com.giftsay.ui.fragment;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -19,6 +20,17 @@ public class MyFragment extends AbsBaseFragment implements RadioGroup.OnCheckedC
     private TextView showTv;
     private RadioGroup radioGroup;
     private RadioButton mysingleBtn,mystartegyBtn;
+    private String url;
+
+
+    public static MyFragment newInstance(String url) {
+
+        Bundle args = new Bundle();
+        args.putString("url",url);
+        MyFragment fragment = new MyFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     protected int setLayoout() {
         return R.layout.fragment_my;
@@ -37,6 +49,8 @@ public class MyFragment extends AbsBaseFragment implements RadioGroup.OnCheckedC
     protected void initDatas() {
 
         radioGroup.setOnCheckedChangeListener(this);
+        Bundle bundle = getArguments();
+        this.url = bundle.getString("url");
     }
 
 

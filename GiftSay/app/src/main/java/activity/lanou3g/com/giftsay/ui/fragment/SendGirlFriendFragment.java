@@ -61,7 +61,7 @@ public class SendGirlFriendFragment extends  AbsBaseFragment {
 
         girlFrendAdapter = new SendGirlFrendAdapter(context);
 
-//        queue = Volley.newRequestQueue(GiftSayApp.getContext());
+
         VolleyeInstance.getInstance().startRequest(url, new VolleyResult() {
             @Override
             public void success(String resultStr) {

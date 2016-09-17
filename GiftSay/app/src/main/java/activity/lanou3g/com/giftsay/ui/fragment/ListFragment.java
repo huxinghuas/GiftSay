@@ -37,6 +37,7 @@ public class ListFragment extends AbsBaseFragment {
 
 
 
+
     public static ListFragment newInstance(String url) {
 
         Bundle args = new Bundle();
@@ -79,10 +80,9 @@ public class ListFragment extends AbsBaseFragment {
         listTab.getTabAt(3).setText("新星榜");
 
 
-//
-//        Bundle bundle = getArguments();
-//        this.url = bundle.getString("url");
-//        showTv.setText(this.url);
+        Bundle bundle = getArguments();
+        this.url = bundle.getString("url");
+         showTv.setText(this.url);
 
 
 

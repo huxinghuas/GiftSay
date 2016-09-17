@@ -1,5 +1,6 @@
 package activity.lanou3g.com.giftsay.ui.fragment;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -27,8 +28,20 @@ public class HomeFragment extends AbsBaseFragment {
     private HomeAdpter homeAdpter;
     private List<Fragment> fragments;
 
+
     // 请求队列
     private RequestQueue queue;
+    private String url;
+
+    public static HomeFragment newInstance(String url) {
+
+        Bundle args = new Bundle();
+        args.putString("url",url);
+        HomeFragment fragment = new HomeFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 
     protected int setLayoout() {
         return R.layout.fragment_home;
@@ -49,13 +62,21 @@ public class HomeFragment extends AbsBaseFragment {
         // home页tab
         buildData();
         // 
-        initGetNet();
+
     }
 
-    private void initGetNet() {
-    }
+
 
     private void buildData() {
+
+
+
+        Bundle bundle  = getArguments();
+        this.url = bundle.getString("url");
+
+
+
+
         // 添加tablayout页面数据
         fragments = new ArrayList<>();
         fragments.add(new SelectiveFragment());

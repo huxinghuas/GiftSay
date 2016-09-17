@@ -1,23 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+   >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="栏目"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/item_strart_title_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/mq_arrow_right"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:layout_centerHorizontal="true"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_toLeftOf="@+id/item_selective_rv_img"
+                android:layout_marginTop="15dp"
+                android:text="查看全部"
+                android:textColor="#0c0c0c"
+                android:textSize="10sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="7"
+            >
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/startegy_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:background="#d4d2d2"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            >
+            <ListView
+                android:id="@+id/strartegy_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </ListView>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 
 
-       <TextView
-           android:id="@+id/startegy_tv"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginLeft="5dp"
-           android:text="中秋佳节送好礼"
-           android:textColor="#a79e9e"
-           android:textSize="14sp"
-           />
-
-   </LinearLayout>
+   </ScrollView>
 
 
 

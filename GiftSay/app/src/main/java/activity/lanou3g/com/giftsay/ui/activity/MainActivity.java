@@ -1,10 +1,14 @@
 package activity.lanou3g.com.giftsay.ui.activity;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.RadioGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
 import activity.lanou3g.com.giftsay.ui.fragment.CategoryFragment;
@@ -20,6 +24,7 @@ public class MainActivity extends AbsBaseActivity {
     private ListFragment listFragment;
     private CategoryFragment categoryFragment;
     private MyFragment myFragment;
+    private List<Fragment> fragments;
 
     @Override
     protected int setLayout() {
@@ -34,10 +39,13 @@ public class MainActivity extends AbsBaseActivity {
 
     @Override
     protected void initDatas() {
-        homeFragment = new HomeFragment();
-        listFragment = new ListFragment();
-        categoryFragment = new CategoryFragment();
-        myFragment = new MyFragment();
+       homeFragment = new HomeFragment();
+        fragments = new ArrayList<>();
+        fragments.add(HomeFragment.newInstance(""));
+        fragments.add(ListFragment.newInstance(""));
+        fragments.add(CategoryFragment.newInstance(""));
+        fragments.add(MyFragment.newInstance(""));
+
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -48,16 +56,16 @@ public class MainActivity extends AbsBaseActivity {
 
                 switch (checkedId) {
                     case R.id.main_home_rb:
-                        transaction.replace(R.id.main_frame_layout, homeFragment);
+                        transaction.replace(R.id.main_frame_layout, HomeFragment.newInstance(""));
                         break;
                     case R.id.main_list_rb:
-                        transaction.replace(R.id.main_frame_layout, listFragment);
+                        transaction.replace(R.id.main_frame_layout, ListFragment.newInstance(""));
                         break;
                     case R.id.main_class_category_rb:
-                        transaction.replace(R.id.main_frame_layout, categoryFragment);
+                        transaction.replace(R.id.main_frame_layout, CategoryFragment.newInstance(""));
                         break;
                     case R.id.main_my_rb:
-                        transaction.replace(R.id.main_frame_layout, myFragment);
+                        transaction.replace(R.id.main_frame_layout, MyFragment.newInstance(""));
                         break;
                 }
 

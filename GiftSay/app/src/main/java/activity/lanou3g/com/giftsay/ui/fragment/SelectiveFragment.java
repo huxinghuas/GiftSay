@@ -37,7 +37,7 @@ import activity.lanou3g.com.giftsay.view.MyListView;
 
 /**
  * Created by dllo on 16/9/9.
- * 精品页面
+ * 精选页面
  */
 public class SelectiveFragment extends AbsBaseFragment {
     private LinearLayout drawerView;
@@ -167,7 +167,7 @@ public class SelectiveFragment extends AbsBaseFragment {
         for (int i = 0; i < datas.size(); i++) {
             ImageView pointTv = new ImageView(context);
             pointTv.setPadding(5,5,5,5);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(30,30);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(28,28);
             pointTv.setLayoutParams(params);
 
             // 设置第0个页小点灰色
@@ -254,7 +254,7 @@ public class SelectiveFragment extends AbsBaseFragment {
 
          lvadpter = new SelectiveLvAdapter(context);
 
-    //    queue = Volley.newRequestQueue(GiftSayApp.getContext());
+
 
         VolleyeInstance.getInstance().startRequest(dataLv, new VolleyResult() {
             @Override
