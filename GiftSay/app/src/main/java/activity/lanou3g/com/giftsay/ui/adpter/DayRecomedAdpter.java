@@ -48,7 +48,7 @@ public class DayRecomedAdpter extends RecyclerView.Adapter<DayRecomedAdpter.DayV
                Log.d("DayRecomedAdpter", bean.getShort_description());
                 holder.contactOneTv.setText(bean.getShort_description());
                 holder.contactTwoTv.setText(bean.getName());
-                holder.priceTv.setText(bean.getPrice());
+                holder.priceTv.setText("¥"+ "  " + bean.getPrice());
         Log.d("XXX", bean.getCover_image_url());
                 Picasso.with(context).load(bean.getCover_image_url()).into(holder.dayImg);
 //             holder.contactOneTv.setText(bean.get(position).getShort_description());

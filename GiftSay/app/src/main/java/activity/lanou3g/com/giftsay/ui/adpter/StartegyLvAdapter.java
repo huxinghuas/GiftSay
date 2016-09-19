@@ -50,6 +50,7 @@ public class StartegyLvAdapter extends BaseAdapter {
         if(convertView == null){
             convertView = LayoutInflater.from(context).inflate(R.layout.item_startegy_lv,parent,false);
             holder = new StartegyLvViewHolder(convertView);
+            // 重新设置行布局的高
             convertView.setTag(holder);
         }else {
             holder = (StartegyLvViewHolder) convertView.getTag();

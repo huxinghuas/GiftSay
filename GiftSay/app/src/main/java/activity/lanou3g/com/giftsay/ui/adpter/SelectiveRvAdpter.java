@@ -12,6 +12,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
+import activity.lanou3g.com.giftsay.modle.bean.SelectOnRvitemClick;
 import activity.lanou3g.com.giftsay.modle.bean.SelectiveRvBean;
 import activity.lanou3g.com.giftsay.tools.ScreenSizeUtil;
 
@@ -25,6 +26,13 @@ public class SelectiveRvAdpter  extends  RecyclerView.Adapter<SelectiveRvAdpter.
 
     private Context context;
     private List<SelectiveRvBean.DataBean.SecondaryBannersBean> datas;
+
+    private SelectOnRvitemClick onRvitemClick;
+
+
+    public void setOnRvitemClick(SelectOnRvitemClick onRvitemClick) {
+        this.onRvitemClick = onRvitemClick;
+    }
 
     public SelectiveRvAdpter(Context context) {
         this.context = context;
@@ -45,7 +53,7 @@ public class SelectiveRvAdpter  extends  RecyclerView.Adapter<SelectiveRvAdpter.
         int height  = ScreenSizeUtil.getScreenHeight(context);
         int weight = ScreenSizeUtil.getScreenWidth(context);
         ViewGroup.LayoutParams params = view.getLayoutParams();
-        params.height = (int)(height/6) ;
+        params.height = (int)(height/7) ;
         params.width = (int)(weight/4);
         view.setLayoutParams(params);
 
@@ -55,11 +63,30 @@ public class SelectiveRvAdpter  extends  RecyclerView.Adapter<SelectiveRvAdpter.
 
 
     @Override
-    public void onBindViewHolder(SelectiveRvHolder holder, int position) {
+    public void onBindViewHolder(final SelectiveRvHolder holder, final int position) {
 
         SelectiveRvBean.DataBean.SecondaryBannersBean bean = datas.get(position);
 
         Picasso.with(context).load(bean.getImage_url()).into(holder.img);
+
+        // 设置item的行点击事件
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(onRvitemClick != null){
+                    // 获取当前行布局的positon
+                    int p = holder.getLayoutPosition();
+                    // 获取当前行布局的数据
+                    SelectiveRvBean.DataBean.SecondaryBannersBean str  = datas.get(position);
+
+                    onRvitemClick.onRvItemClickListener(p,str);
+                }
+
+            }
+        });
+
+
+
     }
 
     @Override

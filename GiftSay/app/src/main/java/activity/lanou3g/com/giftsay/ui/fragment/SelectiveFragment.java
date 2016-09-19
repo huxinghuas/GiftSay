@@ -1,6 +1,7 @@
 package activity.lanou3g.com.giftsay.ui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
@@ -14,21 +15,27 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
+import activity.lanou3g.com.giftsay.modle.bean.SelectOnRvitemClick;
 import activity.lanou3g.com.giftsay.modle.bean.SelectiveLvBean;
 import activity.lanou3g.com.giftsay.modle.bean.SelectiveRvBean;
 import activity.lanou3g.com.giftsay.modle.bean.ShufflingBean;
 import activity.lanou3g.com.giftsay.modle.net.VolleyResult;
 import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
+import activity.lanou3g.com.giftsay.ui.activity.SelectiveRvInfoActivity;
 import activity.lanou3g.com.giftsay.ui.adpter.SelectiveLvAdapter;
 import activity.lanou3g.com.giftsay.ui.adpter.SelectiveRvAdpter;
 import activity.lanou3g.com.giftsay.ui.adpter.ShufflingAdapter;
@@ -57,7 +64,8 @@ public class SelectiveFragment extends AbsBaseFragment {
    // 定义并初始化lv适配器和集合;
     private MyListView listview;
     private SelectiveLvAdapter lvadpter;
-
+    // 时间更新并初始化
+    private TextView timeTv;
 
 
     String dataShuffling = "http://api.liwushuo.com/v2/banners?channel=IOS";
@@ -78,6 +86,7 @@ public class SelectiveFragment extends AbsBaseFragment {
         listview = byView(R.id.seletive_lv);
         viewPager = byView(R.id.shuffling_vp);
         pointLl = byView(R.id.shuffling_point_container);
+        timeTv = byView(R.id.select_four_item_time);
     }
 
     @Override
@@ -88,6 +97,51 @@ public class SelectiveFragment extends AbsBaseFragment {
         getTwoRecycleView();
         // 顶部轮播图
         getLunbo();
+        // Rv行布局点击
+        getOnRvitemclik();
+        // 获取本地时间
+        itemAndUpdate();
+
+    }
+
+    private void itemAndUpdate() {
+        SimpleDateFormat formatter = new SimpleDateFormat("MM月dd日");
+        Date curDate = new Date(System.currentTimeMillis());
+        String str = formatter.format(curDate);
+        Calendar c = Calendar.getInstance();
+        String week = String.valueOf(c.get(Calendar.DAY_OF_WEEK));
+        if ("1".equals(week)) {
+            week = "星期日";
+        } else if ("2".equals(week)) {
+            week = "星期一";
+        } else if ("3".equals(week)) {
+            week = "星期二";
+        } else if ("4".equals(week)) {
+            week = "星期三";
+        } else if ("5".equals(week)) {
+            week = "星期四";
+        } else if ("6".equals(week)) {
+            week = "星期五";
+        } else if ("7".equals(week)) {
+            week = "星期六";
+        }
+        timeTv.setText("   " + str + " " + week + "   ");
+    }
+
+    private void getOnRvitemclik() {
+        rvadpter.setOnRvitemClick(new SelectOnRvitemClick() {
+            @Override
+            public void onRvItemClickListener(int position, SelectiveRvBean.DataBean.SecondaryBannersBean str) {
+               SelectiveRvBean.DataBean.SecondaryBannersBean bean = str;
+                // 获取网址
+                String imgUrl = bean.getImage_url();
+                // 设置Intent
+                Intent intent = new Intent(context, SelectiveRvInfoActivity.class);
+                intent.putExtra("imgurl",imgUrl);
+                intent.putExtra("id",bean.getId());
+                startActivity(intent);
+            }
+        });
 
     }
 

@@ -4,8 +4,13 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 
@@ -27,7 +32,7 @@ public class HomeFragment extends AbsBaseFragment {
     private ViewPager homeVp;
     private HomeAdpter homeAdpter;
     private List<Fragment> fragments;
-
+    private ImageView indexDownImg;
 
     // 请求队列
     private RequestQueue queue;
@@ -52,7 +57,7 @@ public class HomeFragment extends AbsBaseFragment {
         showTv = byView(R.id.home_tv);
         homeTab = byView(R.id.home_tab);
         homeVp = byView(R.id.home_vp);
-
+        indexDownImg = byView(R.id.home_arrow_index_down);
 
     }
 
@@ -75,11 +80,13 @@ public class HomeFragment extends AbsBaseFragment {
         this.url = bundle.getString("url");
 
 
+        getPopWindow();
 
 
         // 添加tablayout页面数据
         fragments = new ArrayList<>();
         fragments.add(new SelectiveFragment());
+
         fragments.add(SendGirlFriendFragment.newInstance(GetUrl.SEND_GIRLFREND));
         fragments.add(SendGirlFriendFragment.newInstance(GetUrl.ONLIN_SHOP));
         fragments.add(SendGirlFriendFragment.newInstance(GetUrl.CREATE_LIFE));
@@ -114,6 +121,38 @@ public class HomeFragment extends AbsBaseFragment {
         homeTab.getTabAt(9).setText("奇葩搞怪");
         homeTab.getTabAt(10).setText("科技范");
         homeTab.getTabAt(11).setText("萌萌哒");
+
+    }
+
+    private void getPopWindow() {
+
+    indexDownImg.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(context, "点击了", Toast.LENGTH_SHORT).show();
+            PopupWindow pw = new PopupWindow(context);
+            pw.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+            pw.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+           View view = getLayoutInflater(getArguments()).inflate(R.layout.home_pop_window,null);
+            pw.setContentView(view);
+            pw.setOutsideTouchable(true);
+            pw.setFocusable(true);
+            pw.showAsDropDown(indexDownImg);
+
+            pw.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                @Override
+                public void onDismiss() {
+                  indexDownImg.setImageResource(R.mipmap.arrow_index_down);
+                }
+            });
+
+            indexDownImg.setImageResource(R.mipmap.arrow_index_up);
+
+
+        }
+
+        });
+
     }
 
 

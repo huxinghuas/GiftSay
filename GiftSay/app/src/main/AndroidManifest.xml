@@ -22,6 +22,8 @@
         <activity android:name=".ui.activity.WelcomActivity">
 
         </activity>
+
+        <activity android:name=".ui.activity.SelectiveRvInfoActivity"/>
     </application>
 
 </manifest>

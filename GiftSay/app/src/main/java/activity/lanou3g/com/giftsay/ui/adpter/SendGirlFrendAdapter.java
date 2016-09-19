@@ -16,6 +16,7 @@ import activity.lanou3g.com.giftsay.R;
 import activity.lanou3g.com.giftsay.modle.bean.SelectiveLvBean;
 import activity.lanou3g.com.giftsay.modle.bean.SendGirlFrendBean;
 import activity.lanou3g.com.giftsay.tools.ScreenSizeUtil;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by dllo on 16/9/14.
@@ -83,7 +84,7 @@ public class SendGirlFrendAdapter extends BaseAdapter {
     class MyViewHolder {
 
         private TextView show_first_line_left_tv, show_first_line_left_second_tv, show_first_line_rihgt_tv;
-        private ImageView show_first_line_right_img;
+        private CircleImageView show_first_line_right_img;
         private ImageView show_center_img;
         private TextView show_three_line_left_tv, show_three_line_right_tv;
         private ImageView show_three_line_right_img;
@@ -94,7 +95,7 @@ public class SendGirlFrendAdapter extends BaseAdapter {
             show_first_line_left_tv = (TextView) v.findViewById(R.id.selective_lv_first_line_left_tv);
             show_first_line_left_second_tv = (TextView) v.findViewById(R.id.seletive_lv_first_line_left_second_tv);
             show_first_line_rihgt_tv = (TextView) v.findViewById(R.id.selective_lv_first_line_right_tv);
-            show_first_line_right_img = (ImageView) v.findViewById(R.id.selective_lv_first_line_right_img);
+            show_first_line_right_img = (CircleImageView) v.findViewById(R.id.selective_lv_first_line_right_img);
             show_center_img = (ImageView) v.findViewById(R.id.selective_lv_center_img);
             show_three_line_left_tv = (TextView) v.findViewById(R.id.selective_lv_three_line_left_tv);
             show_three_line_right_img = (ImageView) v.findViewById(R.id.selective_lv_three_righ_timg);

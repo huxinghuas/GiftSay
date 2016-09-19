@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="2">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -28,8 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginRight="5dp"
                 android:src="@mipmap/mq_arrow_right"
 
                 />
@@ -39,8 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
                 android:layout_toLeftOf="@+id/item_selective_rv_img"
                 android:text="查看全部"
                 android:textColor="#0c0c0c"
