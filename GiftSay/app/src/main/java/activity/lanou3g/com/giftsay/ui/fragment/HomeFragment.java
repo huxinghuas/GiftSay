@@ -13,12 +13,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
 import activity.lanou3g.com.giftsay.modle.bean.GetUrl;
+import activity.lanou3g.com.giftsay.modle.bean.GuidBean;
+import activity.lanou3g.com.giftsay.modle.net.VolleyResult;
+import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
 import activity.lanou3g.com.giftsay.ui.adpter.HomeAdpter;
 
 /**
@@ -33,6 +37,7 @@ public class HomeFragment extends AbsBaseFragment {
     private HomeAdpter homeAdpter;
     private List<Fragment> fragments;
     private ImageView indexDownImg;
+    private List<GuidBean.DataBean.CandidatesBean> list;
 
     // 请求队列
     private RequestQueue queue;
@@ -80,13 +85,19 @@ public class HomeFragment extends AbsBaseFragment {
         this.url = bundle.getString("url");
 
 
+
+
+
+
+
+
+
         getPopWindow();
 
 
         // 添加tablayout页面数据
         fragments = new ArrayList<>();
         fragments.add(new SelectiveFragment());
-
         fragments.add(SendGirlFriendFragment.newInstance(GetUrl.SEND_GIRLFREND));
         fragments.add(SendGirlFriendFragment.newInstance(GetUrl.ONLIN_SHOP));
         fragments.add(SendGirlFriendFragment.newInstance(GetUrl.CREATE_LIFE));
@@ -101,7 +112,6 @@ public class HomeFragment extends AbsBaseFragment {
         fragments.add(SendGirlFriendFragment.newInstance(GetUrl.THE_LOVELY));
 
 
-
         homeAdpter = new HomeAdpter(getChildFragmentManager(),fragments);
         homeVp.setAdapter(homeAdpter);
         homeTab.setupWithViewPager(homeVp);
@@ -109,18 +119,45 @@ public class HomeFragment extends AbsBaseFragment {
         View v = getLayoutInflater(getArguments()).inflate(R.layout.item_home_tab,null);
 
 
-        homeTab.getTabAt(0).setText("精品");
-        homeTab.getTabAt(1).setText("送女票");
-        homeTab.getTabAt(2).setText("海淘");
-        homeTab.getTabAt(3).setText("创意生活");
-        homeTab.getTabAt(4).setText("送基友");
-        homeTab.getTabAt(5).setText("送爸妈");
-        homeTab.getTabAt(6).setText("送宝贝");
-        homeTab.getTabAt(7).setText("设计感");
-        homeTab.getTabAt(8).setText("文艺风");
-        homeTab.getTabAt(9).setText("奇葩搞怪");
-        homeTab.getTabAt(10).setText("科技范");
-        homeTab.getTabAt(11).setText("萌萌哒");
+        VolleyeInstance.getInstance().startRequest(GetUrl.GUID, new VolleyResult() {
+            @Override
+            public void success(String resultStr) {
+                Log.d("HomeFragmentURL", resultStr);
+                Gson gson = new Gson();
+                GuidBean bean  = gson.fromJson(resultStr,GuidBean.class);
+                list = bean.getData().getCandidates();
+                Log.d("HomeFragmentURL", "list.size():" + list.size());
+
+                Log.d("HomeFragmentURL", "list:" + list);
+                for (int i = 0 ; i < fragments.size();i++ ){
+                    homeTab.getTabAt(i).setText(list.get(i).getName());
+                }
+
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
+
+
+
+
+
+//
+//        homeTab.getTabAt(0).setText("精品");
+//        homeTab.getTabAt(1).setText("送女票");
+//        homeTab.getTabAt(2).setText("海淘");
+//        homeTab.getTabAt(3).setText("创意生活");
+//        homeTab.getTabAt(4).setText("送基友");
+//        homeTab.getTabAt(5).setText("送爸妈");
+//        homeTab.getTabAt(6).setText("送宝贝");
+//        homeTab.getTabAt(7).setText("设计感");
+//        homeTab.getTabAt(8).setText("文艺风");
+//        homeTab.getTabAt(9).setText("奇葩搞怪");
+//        homeTab.getTabAt(10).setText("科技范");
+//        homeTab.getTabAt(11).setText("萌萌哒");
 
     }
 

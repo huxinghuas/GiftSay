@@ -20,13 +20,14 @@ import activity.lanou3g.com.giftsay.modle.net.VolleyResult;
 import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
 import activity.lanou3g.com.giftsay.ui.adpter.DayRecomedAdpter;
 import activity.lanou3g.com.giftsay.ui.fragment.AbsBaseFragment;
+import activity.lanou3g.com.giftsay.view.MyRecyvleView;
 
 /**
  * Created by dllo on 16/9/9.
  * 每日精品页面
  */
 public class DayRecomedFragment extends AbsBaseFragment {
-    private RecyclerView dayRv;
+    private MyRecyvleView dayRv;
     private String url;
     private DayRecomedAdpter adpter;
     private ImageView imageView;

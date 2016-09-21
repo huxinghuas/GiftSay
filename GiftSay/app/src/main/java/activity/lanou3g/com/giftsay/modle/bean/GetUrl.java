@@ -7,6 +7,13 @@ public final class GetUrl {
 
     private GetUrl(){}
 
+
+    /**
+     * 导航
+     */
+
+    public  static  final  String GUID = "http://api.liwushuo.com/v2/channels/preset?gender=1&generation=4";
+
     /**
      *送女友
      */
@@ -77,6 +84,8 @@ public final class GetUrl {
      */
      public  static  final  String STRATEGY_RV ="http://api.liwushuo.com/v2/columns";
      public  static  final  String STRATEGY_LV = "http://api.liwushuo.com/v2/channel_groups/all";
-
-
+    /**
+     * 单品
+     */
+    public  static  final  String SINGLE_PRODUCT = "http://api.liwushuo.com/v2/item_categories/tree";
 }

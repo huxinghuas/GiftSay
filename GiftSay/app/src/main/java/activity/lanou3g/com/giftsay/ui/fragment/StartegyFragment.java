@@ -20,6 +20,7 @@ import activity.lanou3g.com.giftsay.modle.net.VolleyResult;
 import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
 import activity.lanou3g.com.giftsay.ui.adpter.StartegyLvAdapter;
 import activity.lanou3g.com.giftsay.ui.adpter.StartegyRvAdapter;
+import activity.lanou3g.com.giftsay.view.MyListView;
 
 /**
  * Created by dllo on 16/9/10.
@@ -34,7 +35,7 @@ public class StartegyFragment extends  AbsBaseFragment {
 
     private List<StartegyLvBean.DataBean.ChannelGroupsBean>  list;
     private StartegyLvAdapter lvAdapter;
-    private ListView listView;
+    private MyListView listView;
 
 
     protected int setLayoout() {
