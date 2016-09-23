@@ -27,10 +27,9 @@ import activity.lanou3g.com.giftsay.view.MyRecyvleView;
  * 每日精品页面
  */
 public class DayRecomedFragment extends AbsBaseFragment {
-    private MyRecyvleView dayRv;
+    private RecyclerView dayRv;
     private String url;
     private DayRecomedAdpter adpter;
-    private ImageView imageView;
 
     public static DayRecomedFragment newInstance(String url) {
 
@@ -49,7 +48,6 @@ public class DayRecomedFragment extends AbsBaseFragment {
     @Override
     protected void initViews() {
       dayRv = byView(R.id.day_recomed_rv);
-        imageView = byView(R.id.dayrecomd_img);
     }
 
     @Override
@@ -70,10 +68,10 @@ public class DayRecomedFragment extends AbsBaseFragment {
                 Gson gson = new Gson();
                 DayRecomedBean bean = gson.fromJson(resultStr,DayRecomedBean.class);
                 List<DayRecomedBean.DataBean.ItemsBean> datas = bean.getData().getItems();
-
-                Picasso.with(context).load(bean.getData().getCover_image()).into(imageView);
                 Log.d("DayRecomedFragment", "datas.size():" + datas.size());
-                adpter.setDatas(datas);
+              //  adpter.setDatas(datas);
+                String imgUrl = bean.getData().getCover_image();
+                adpter.setDatas(datas,imgUrl);
                 GridLayoutManager manager = new GridLayoutManager(context,2);
                 dayRv.setLayoutManager(manager);
                 dayRv.setAdapter(adpter);
