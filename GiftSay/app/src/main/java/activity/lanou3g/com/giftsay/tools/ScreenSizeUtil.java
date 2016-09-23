@@ -6,6 +6,7 @@ import android.view.WindowManager;
 
 /**
  * Created by dllo on 16/9/13.
+ * 获取手机屏幕高度或宽度的实体类
  */
 public class ScreenSizeUtil {
 

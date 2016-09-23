@@ -114,9 +114,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
                     android:ellipsize="end"
-                    android:maxEms="30"
-                    android:maxLines="1"
-                    android:minLines="1"
+                    android:maxEms="20"
+                    android:singleLine="true"
                     android:textColor="#050505"
                     android:text="异地保鲜恋哈哈哈哈"
                     android:textSize="15sp" />

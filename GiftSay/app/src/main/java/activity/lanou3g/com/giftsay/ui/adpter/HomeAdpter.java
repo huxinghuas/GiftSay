@@ -11,6 +11,7 @@ import activity.lanou3g.com.giftsay.modle.bean.GuidBean;
 
 /**
  * Created by dllo on 16/9/9.
+ * 首页适配器
  */
 public class HomeAdpter  extends FragmentPagerAdapter{
 

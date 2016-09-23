@@ -19,6 +19,7 @@ import activity.lanou3g.com.giftsay.tools.ScreenSizeUtil;
 
 /**
  * Created by dllo on 16/9/15.
+ * 轮播适配器
  */
 public class ShufflingAdapter extends PagerAdapter {
 

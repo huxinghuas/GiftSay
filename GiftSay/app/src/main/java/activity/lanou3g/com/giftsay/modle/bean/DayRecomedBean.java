@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/14.
+ * 每日精品的实体类页面
  */
 public class DayRecomedBean {
 

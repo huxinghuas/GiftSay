@@ -18,6 +18,7 @@ import activity.lanou3g.com.giftsay.modle.bean.DayRecomedBean;
 
 /**
  * Created by dllo on 16/9/14.
+ * 每日精选适配器
  */
 public class DayRecomedAdpter extends RecyclerView.Adapter<DayRecomedAdpter.DayViewHolder>{
 
@@ -45,7 +46,6 @@ public class DayRecomedAdpter extends RecyclerView.Adapter<DayRecomedAdpter.DayV
     public void onBindViewHolder(DayViewHolder holder, int position) {
 
                DayRecomedBean.DataBean.ItemsBean bean = datas.get(position);
-               Log.d("DayRecomedAdpter", bean.getShort_description());
                 holder.contactOneTv.setText(bean.getShort_description());
                 holder.contactTwoTv.setText(bean.getName());
                 holder.priceTv.setText("¥"+ "  " + bean.getPrice());

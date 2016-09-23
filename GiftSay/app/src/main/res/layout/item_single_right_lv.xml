@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--单品右边行布局页面-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,6 +7,8 @@
 
 
     <LinearLayout
+        android:layout_marginTop="30dp"
+
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -14,14 +17,15 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
 
             <View
+                android:id="@+id/single_right_view"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_centerInParent="true"
-                android:background="#cccccc" />
+                android:background="#dfdfdfdf" />
 
 
             <TextView
@@ -29,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:background="#ededed"
+                android:background="#fff"
                 android:text="    个性配饰    "
                 android:textSize="15sp" />
 
@@ -45,19 +49,16 @@
         android:layout_weight="6"
         >
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/single_right_rv"
+
+        <activity.lanou3g.com.giftsay.view.MyGridView
+            android:id="@+id/single_right_lv_gride"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:numColumns="3"/>
+
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/single_right_lay"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.5"
-        android:orientation="vertical"
-        />
+
 
 </LinearLayout>

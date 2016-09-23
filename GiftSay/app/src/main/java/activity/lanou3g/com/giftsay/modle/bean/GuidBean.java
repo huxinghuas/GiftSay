@@ -8,7 +8,7 @@ import java.util.List;
 public class GuidBean {
 
 
-    /**
+    /** 导航 的实体类
      * code : 200
      * data : {"candidates":[{"editable":true,"id":121,"name":"数码","url":null},{"editable":true,"id":111,"name":"礼物","url":null},{"editable":true,"id":118,"name":"美食","url":null},{"editable":true,"id":26,"name":"送基友","url":null},{"editable":true,"id":10,"name":"送女票","url":null},{"editable":true,"id":5,"name":"送闺蜜","url":null},{"editable":true,"id":6,"name":"送爸妈","url":null},{"editable":true,"id":24,"name":"送宝贝","url":null},{"editable":true,"id":126,"name":"奇葩搞怪","url":null},{"editable":true,"id":125,"name":"创意生活","url":null},{"editable":true,"id":14,"name":"文艺风","url":null},{"editable":true,"id":11,"name":"萌萌哒","url":null},{"editable":true,"id":127,"name":"设计感","url":null},{"editable":true,"id":28,"name":"科技范","url":null}],"channels":[{"editable":false,"id":108,"name":"精选"},{"editable":true,"id":121,"name":"数码","url":null},{"editable":true,"id":111,"name":"礼物","url":null},{"editable":true,"id":118,"name":"美食","url":null},{"editable":true,"id":26,"name":"送基友","url":null},{"editable":true,"id":10,"name":"送女票","url":null},{"editable":true,"id":5,"name":"送闺蜜","url":null},{"editable":true,"id":6,"name":"送爸妈","url":null},{"editable":true,"id":24,"name":"送宝贝","url":null},{"editable":true,"id":126,"name":"奇葩搞怪","url":null},{"editable":true,"id":125,"name":"创意生活","url":null},{"editable":true,"id":14,"name":"文艺风","url":null},{"editable":true,"id":11,"name":"萌萌哒","url":null},{"editable":true,"id":127,"name":"设计感","url":null},{"editable":true,"id":28,"name":"科技范","url":null}]}
      * message : OK

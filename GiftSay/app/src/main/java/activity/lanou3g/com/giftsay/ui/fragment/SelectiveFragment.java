@@ -10,6 +10,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -35,6 +38,7 @@ import activity.lanou3g.com.giftsay.modle.bean.SelectiveRvBean;
 import activity.lanou3g.com.giftsay.modle.bean.ShufflingBean;
 import activity.lanou3g.com.giftsay.modle.net.VolleyResult;
 import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
+import activity.lanou3g.com.giftsay.ui.activity.SelectiveLvInfoActivity;
 import activity.lanou3g.com.giftsay.ui.activity.SelectiveRvInfoActivity;
 import activity.lanou3g.com.giftsay.ui.adpter.SelectiveLvAdapter;
 import activity.lanou3g.com.giftsay.ui.adpter.SelectiveRvAdpter;
@@ -101,7 +105,38 @@ public class SelectiveFragment extends AbsBaseFragment {
         getOnRvitemclik();
         // 获取本地时间
         itemAndUpdate();
+        getOnLvItemclick();
 
+        getViewPageclick();
+    }
+
+    private void getViewPageclick() {
+
+
+        viewPager.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                return false;
+            }
+        });
+    }
+
+    private void getOnLvItemclick() {
+       listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+           SelectiveLvBean.DataBean.ItemsBean bean = (SelectiveLvBean.DataBean.ItemsBean) parent.getItemAtPosition(position);
+
+
+               Intent intent = new Intent(context, SelectiveLvInfoActivity.class);
+               if(bean.getColumn()!=null){
+               intent.putExtra("id",bean.getUrl());}
+                startActivity(intent);
+           }
+       });
     }
 
     private void itemAndUpdate() {

@@ -20,6 +20,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by dllo on 16/9/14.
+ * 送女友适配器
  */
 public class SendGirlFrendAdapter extends BaseAdapter {
 

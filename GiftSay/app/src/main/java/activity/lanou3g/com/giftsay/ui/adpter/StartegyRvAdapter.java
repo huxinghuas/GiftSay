@@ -19,7 +19,7 @@ import activity.lanou3g.com.giftsay.tools.ScreenSizeUtil;
 
 /**
  * Created by dllo on 16/9/16.
- * 攻略页面适配器
+ * 攻略页面RV适配器
  */
 public class StartegyRvAdapter extends RecyclerView.Adapter<StartegyRvAdapter.MyViewHodler> {
 

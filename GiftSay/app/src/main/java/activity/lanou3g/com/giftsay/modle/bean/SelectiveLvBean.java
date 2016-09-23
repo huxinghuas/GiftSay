@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/13.
+ * 精选实体类
  */
 public class SelectiveLvBean {
 
