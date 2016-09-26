@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GiftSay</string>
+    <string name="rmb_name">¥</string>
 </resources>

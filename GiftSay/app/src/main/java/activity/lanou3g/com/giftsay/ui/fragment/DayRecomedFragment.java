@@ -77,7 +77,7 @@ public class DayRecomedFragment extends AbsBaseFragment {
                 dayRv.setAdapter(adpter);
             }
 
-            @Override
+
             public void failure() {
 
             }

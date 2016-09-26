@@ -55,8 +55,8 @@ public class SelectiveFragment extends AbsBaseFragment {
 
 
     // 创建轮播图
-    private static  final  int TIME = 3000;
-    private  LinearLayout pointLl; // 轮播状态改变的小圆点容器
+    private static final int TIME = 3000;
+    private LinearLayout pointLl; // 轮播状态改变的小圆点容器
     private ShufflingAdapter shuflingAdapter;
     private List<ShufflingBean.DataBean.BannersBean> datas;
     private ViewPager viewPager;
@@ -65,17 +65,16 @@ public class SelectiveFragment extends AbsBaseFragment {
     // 定义并初始化rv适配器和集合
     private RecyclerView recyclerView;
     private SelectiveRvAdpter rvadpter;
-   // 定义并初始化lv适配器和集合;
-    private MyListView listview;
+    // 定义并初始化lv适配器和集合;
+    private ListView listview;
     private SelectiveLvAdapter lvadpter;
     // 时间更新并初始化
     private TextView timeTv;
 
 
     String dataShuffling = "http://api.liwushuo.com/v2/banners?channel=IOS";
-    String dataRv ="http://api.liwushuo.com/v2/secondary_banners?gender=1&generation=2";
-    String dataLv ="http://api.liwushuo.com/v2/channels/101/items_v2?ad=2&gender=1&generation=2&limit=20&offset=0";
-
+    String dataRv = "http://api.liwushuo.com/v2/secondary_banners?gender=1&generation=2";
+    String dataLv = "http://api.liwushuo.com/v2/channels/101/items_v2?ad=2&gender=1&generation=2&limit=20&offset=0";
 
 
     @Override
@@ -86,17 +85,33 @@ public class SelectiveFragment extends AbsBaseFragment {
 
     @Override
     protected void initViews() {
-        recyclerView = byView(R.id.selective_rv);
+        //  recyclerView = byView(R.id.selective_rv);
         listview = byView(R.id.seletive_lv);
-        viewPager = byView(R.id.shuffling_vp);
-        pointLl = byView(R.id.shuffling_point_container);
-        timeTv = byView(R.id.select_four_item_time);
+        //  viewPager = byView(R.id.shuffling_vp);
+        // pointLl = byView(R.id.shuffling_point_container);
+        // timeTv = byView(R.id.select_four_item_time);
     }
 
     @Override
     protected void initDatas() {
-         // Rv获取网络数据的方法并解析数据
-        geRvtIntent();
+
+        // Lv获取网络数据的方法并解析数据
+        getLvitem();
+        // lv行点击事件
+        getOnLvItemclick();
+        // 头布局方法
+        getHead();
+    }
+
+
+    private void getHead() {
+        View headView = getLayoutInflater(getArguments()).inflate(R.layout.fragment_selective_head, null);
+
+        recyclerView = (RecyclerView) headView.findViewById(R.id.selective_rv);
+        viewPager = (ViewPager) headView.findViewById(R.id.shuffling_vp);
+        pointLl = (LinearLayout) headView.findViewById(R.id.shuffling_point_container);
+        timeTv = (TextView) headView.findViewById(R.id.select_four_item_time);
+
         // 横向图片滑动
         getTwoRecycleView();
         // 顶部轮播图
@@ -104,76 +119,66 @@ public class SelectiveFragment extends AbsBaseFragment {
         // Rv行布局点击
         getOnRvitemclik();
         // 获取本地时间
-        itemAndUpdate();
-        getOnLvItemclick();
-
-        getViewPageclick();
+          itemAndUpdate();
+        listview.addHeaderView(headView);
     }
 
-    private void getViewPageclick() {
 
-
-        viewPager.setOnTouchListener(new View.OnTouchListener() {
-
+    private void getOnLvItemclick() {
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                return false;
+                SelectiveLvBean.DataBean.ItemsBean bean = (SelectiveLvBean.DataBean.ItemsBean) parent.getItemAtPosition(position);
+                Intent intent = new Intent(context, SelectiveLvInfoActivity.class);
+                if (bean.getColumn() != null) {
+                    intent.putExtra("id", bean.getUrl());
+                }
+                startActivity(intent);
             }
         });
     }
 
-    private void getOnLvItemclick() {
-       listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-           @Override
-           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-           SelectiveLvBean.DataBean.ItemsBean bean = (SelectiveLvBean.DataBean.ItemsBean) parent.getItemAtPosition(position);
+      private void itemAndUpdate() {
+      SimpleDateFormat formatter = new SimpleDateFormat("MM月dd日");
+      Date curDate = new Date(System.currentTimeMillis());
+      String str = formatter.format(curDate);
+      Calendar c = Calendar.getInstance();
+      String week = String.valueOf(c.get(Calendar.DAY_OF_WEEK));
+      if ("1".equals(week)) {
+       week = "星期日";
+      } else if ("2".equals(week)) {
+      week = "星期一";
+      } else if ("3".equals(week)) {
+      week = "星期二";
+      } else if ("4".equals(week)) {
+      week = "星期三";
+      } else if ("5".equals(week)) {
+      week = "星期四";
+      } else if ("6".equals(week)) {
+      week = "星期五";
+      } else if ("7".equals(week)) {
+      week = "星期六";
+      }
+      Log.d("sr", str);
+      Log.d("sr", week);
+      timeTv.setText("   " + str + " " + week + "   ");
+      }
 
 
-               Intent intent = new Intent(context, SelectiveLvInfoActivity.class);
-               if(bean.getColumn()!=null){
-               intent.putExtra("id",bean.getUrl());}
-                startActivity(intent);
-           }
-       });
-    }
-
-    private void itemAndUpdate() {
-        SimpleDateFormat formatter = new SimpleDateFormat("MM月dd日");
-        Date curDate = new Date(System.currentTimeMillis());
-        String str = formatter.format(curDate);
-        Calendar c = Calendar.getInstance();
-        String week = String.valueOf(c.get(Calendar.DAY_OF_WEEK));
-        if ("1".equals(week)) {
-            week = "星期日";
-        } else if ("2".equals(week)) {
-            week = "星期一";
-        } else if ("3".equals(week)) {
-            week = "星期二";
-        } else if ("4".equals(week)) {
-            week = "星期三";
-        } else if ("5".equals(week)) {
-            week = "星期四";
-        } else if ("6".equals(week)) {
-            week = "星期五";
-        } else if ("7".equals(week)) {
-            week = "星期六";
-        }
-        timeTv.setText("   " + str + " " + week + "   ");
-    }
 
     private void getOnRvitemclik() {
         rvadpter.setOnRvitemClick(new SelectOnRvitemClick() {
             @Override
             public void onRvItemClickListener(int position, SelectiveRvBean.DataBean.SecondaryBannersBean str) {
-               SelectiveRvBean.DataBean.SecondaryBannersBean bean = str;
+                SelectiveRvBean.DataBean.SecondaryBannersBean bean = str;
                 // 获取网址
                 String imgUrl = bean.getImage_url();
                 // 设置Intent
                 Intent intent = new Intent(context, SelectiveRvInfoActivity.class);
-                intent.putExtra("imgurl",imgUrl);
-                intent.putExtra("id",bean.getId());
+                intent.putExtra("imgurl", imgUrl);
+                intent.putExtra("id", bean.getId());
                 startActivity(intent);
             }
         });
@@ -185,22 +190,19 @@ public class SelectiveFragment extends AbsBaseFragment {
         VolleyeInstance.getInstance().startRequest(dataShuffling, new VolleyResult() {
 
 
-
             @Override
             public void success(String resultStr) {
                 // 获取网络
                 Log.d("SelectiveFragmentlunbo", resultStr);
                 // 解析
                 Gson gson = new Gson();
-                ShufflingBean shufflingBean = gson.fromJson(resultStr,ShufflingBean.class);
+                ShufflingBean shufflingBean = gson.fromJson(resultStr, ShufflingBean.class);
                 datas = shufflingBean.getData().getBanners();
 
                 Log.d("SelectiveFragmentds", "datas.size():" + datas.size());
-//                for (int i = 0; i < datas.size(); i++) {
-//                    Picasso.with(context).load(shufflingBean.getData().getBanners().get(i).getImage_url());
-//                }
+                Log.d("xds", "shuflingAdapter:" + viewPager);
+                shuflingAdapter = new ShufflingAdapter(datas, context);
 
-                 shuflingAdapter = new ShufflingAdapter(datas,context);
                 viewPager.setAdapter(shuflingAdapter);
                 // ViewPager的页数为int最大值,设置当前页多一些,可以上来就向前滑动
                 // 为了保证第一页始终为数据的第0条 取余要为0,因此设置数据集合大小的倍数
@@ -252,17 +254,17 @@ public class SelectiveFragment extends AbsBaseFragment {
     }
 
     private void addPoints() {
-            // 有多少张图加载多少个小点
+        // 有多少张图加载多少个小点
         for (int i = 0; i < datas.size(); i++) {
             ImageView pointTv = new ImageView(context);
-            pointTv.setPadding(5,5,5,5);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(28,28);
+            pointTv.setPadding(5, 5, 5, 5);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(28, 28);
             pointTv.setLayoutParams(params);
 
             // 设置第0个页小点灰色
-            if(i == 0 ){
+            if (i == 0) {
                 pointTv.setImageResource(R.mipmap.btn_check_disabled_nightmode);
-            }else {
+            } else {
                 pointTv.setImageResource(R.mipmap.btn_check_normal);
             }
             pointLl.addView(pointTv);
@@ -280,20 +282,20 @@ public class SelectiveFragment extends AbsBaseFragment {
     private Runnable rotateRunnable;
 
 
-    private  void  startRotate(){
+    private void startRotate() {
 
-       rotateRunnable = new Runnable() {
-           @Override
-           public void run() {
-               int nowIndex = viewPager.getCurrentItem();
+        rotateRunnable = new Runnable() {
+            @Override
+            public void run() {
+                int nowIndex = viewPager.getCurrentItem();
                 viewPager.setCurrentItem(++nowIndex);
-               if (isRotate){
-                   handler.postDelayed(rotateRunnable,TIME);
-               }
+                if (isRotate) {
+                    handler.postDelayed(rotateRunnable, TIME);
+                }
 
-           }
-       };
-        handler.postDelayed(rotateRunnable,TIME);
+            }
+        };
+        handler.postDelayed(rotateRunnable, TIME);
     }
 
     @Override
@@ -309,25 +311,24 @@ public class SelectiveFragment extends AbsBaseFragment {
     }
 
 
-
     private void getTwoRecycleView() {
 
         rvadpter = new SelectiveRvAdpter(context);
         //获取网络
-     //   queue = Volley.newRequestQueue(GiftSayApp.getContext());
+        //   queue = Volley.newRequestQueue(GiftSayApp.getContext());
         VolleyeInstance.getInstance().startRequest(dataRv, new VolleyResult() {
             @Override
             public void success(String resultStr) {
                 Log.d("SelectiveFragmentRV", resultStr);
                 // 解析
                 Gson gson = new Gson();
-                SelectiveRvBean   rvBean = gson.fromJson(resultStr,SelectiveRvBean.class);
+                SelectiveRvBean rvBean = gson.fromJson(resultStr, SelectiveRvBean.class);
                 List<SelectiveRvBean.DataBean.SecondaryBannersBean> datas = rvBean.getData().getSecondary_banners();
                 Log.d("SelectiveFragmentRv", "datas.size():" + datas.size());
                 rvadpter.setDatas(datas);
                 recyclerView.setAdapter(rvadpter);
                 LinearLayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
-                 recyclerView.setLayoutManager(manager);
+                recyclerView.setLayoutManager(manager);
 
             }
 
@@ -339,12 +340,9 @@ public class SelectiveFragment extends AbsBaseFragment {
 
     }
 
-    private void geRvtIntent() {
 
-         lvadpter = new SelectiveLvAdapter(context);
-
-
-
+    private void getLvitem() {
+        lvadpter = new SelectiveLvAdapter(context);
         VolleyeInstance.getInstance().startRequest(dataLv, new VolleyResult() {
             @Override
             public void success(String resultStr) {
@@ -352,11 +350,11 @@ public class SelectiveFragment extends AbsBaseFragment {
                 Log.d("SelectiveFragmentRv", resultStr);
                 // 解析
                 Gson gson = new Gson();
-                SelectiveLvBean  lvbean = gson.fromJson(resultStr,SelectiveLvBean.class);
+                SelectiveLvBean lvbean = gson.fromJson(resultStr, SelectiveLvBean.class);
                 // 获取数据添加到集合
 
-              List<SelectiveLvBean.DataBean.ItemsBean> list = lvbean.getData().getItems();
-                   Log.d("xxx", "datas.size():" + list.size());
+                List<SelectiveLvBean.DataBean.ItemsBean> list = lvbean.getData().getItems();
+                Log.d("xxx", "datas.size():" + list.size());
                 lvadpter.setDatas(list);
                 listview.setAdapter(lvadpter);
 
@@ -367,9 +365,5 @@ public class SelectiveFragment extends AbsBaseFragment {
 
             }
         });
-
     }
-
-
-
 }

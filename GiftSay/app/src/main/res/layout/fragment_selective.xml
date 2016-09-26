@@ -1,134 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?><!--精选页面布局-->
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_marginTop="3dp"
-            android:layout_weight="2.5">
+    <ListView
+        android:id="@+id/seletive_lv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
 
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/shuffling_vp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
 
-            <LinearLayout
-                android:id="@+id/shuffling_point_container"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_gravity="bottom|center"
-                android:layout_marginLeft="105dp"
-                android:orientation="horizontal" />
-
-        </FrameLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/selective_rv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="#e7e7e7" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="120dp"
-                android:layout_marginRight="120dp">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_centerInParent="true"
-                    android:background="#cccccc" />
-
-
-                <TextView
-                    android:id="@+id/select_four_item_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginTop="3dp"
-                    android:background="#ededed"
-                    android:text="    9月1日 星期日    "
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/select_four_item_time"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="5dp"
-                    android:text="下次更新8:00"
-                    android:textColor="#f03"
-                    android:textSize="10sp" />
-
-
-            </RelativeLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#e7e7e7" />
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#dedcdc" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4">
-
-            <activity.lanou3g.com.giftsay.view.MyListView
-                android:id="@+id/seletive_lv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    </LinearLayout>
-
-
-</ScrollView>
