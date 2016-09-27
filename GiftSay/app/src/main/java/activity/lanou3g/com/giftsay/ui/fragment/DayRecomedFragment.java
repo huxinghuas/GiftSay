@@ -1,13 +1,16 @@
 package activity.lanou3g.com.giftsay.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
@@ -16,8 +19,10 @@ import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
 import activity.lanou3g.com.giftsay.modle.bean.DayRecomedBean;
+import activity.lanou3g.com.giftsay.modle.bean.DayRecomedOnRvItemClick;
 import activity.lanou3g.com.giftsay.modle.net.VolleyResult;
 import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
+import activity.lanou3g.com.giftsay.ui.activity.DayRecomedactivity;
 import activity.lanou3g.com.giftsay.ui.adpter.DayRecomedAdpter;
 import activity.lanou3g.com.giftsay.ui.fragment.AbsBaseFragment;
 import activity.lanou3g.com.giftsay.view.MyRecyvleView;
@@ -32,7 +37,6 @@ public class DayRecomedFragment extends AbsBaseFragment {
     private DayRecomedAdpter adpter;
 
     public static DayRecomedFragment newInstance(String url) {
-
         Bundle args = new Bundle();
         args.putString("url",url);
         DayRecomedFragment fragment = new DayRecomedFragment();
@@ -82,6 +86,22 @@ public class DayRecomedFragment extends AbsBaseFragment {
 
             }
         });
+
+        // 行布局点击
+       adpter.setOnRvItemClick(new DayRecomedOnRvItemClick() {
+           @Override
+           public void OnRvItemClickLisner(int position, DayRecomedBean.DataBean.ItemsBean bean) {
+
+               DayRecomedBean.DataBean.ItemsBean imgbean = bean;
+               // 获取网络图片网址
+               String imgUrl = bean.getUrl();
+               // 设置inttent
+               Intent intent = new Intent(context, DayRecomedactivity.class);
+               intent.putExtra("imgurl",imgUrl);
+               startActivity(intent);
+
+           }
+       });
 
     }
 }

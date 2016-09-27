@@ -82,7 +82,7 @@ public class ListFragment extends AbsBaseFragment {
 
         Bundle bundle = getArguments();
         this.url = bundle.getString("url");
-         showTv.setText(this.url);
+        // showTv.setText(this.url);
 
 
 

@@ -42,7 +42,6 @@ public class CategoryFragment extends AbsBaseFragment {
 
     @Override
     protected void initViews() {
-        homeTextView = byView(R.id.category_tv);
         categoryTab = byView(R.id.category_tab);
         categoryVp = byView(R.id.category_vp);
 

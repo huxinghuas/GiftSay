@@ -12,12 +12,12 @@ public final class GetUrl {
      * 导航
      */
 
-    public  static  final  String GUID = "http://api.liwushuo.com/v2/channels/preset?gender=1&generation=4";
+    public  static  final  String GUID = "http://api.liwushuo.com/v2/channels/preset?gender=1&generation=2";
 
     /**
      *送女友
      */
-    public static final String SEND_GIRLFREND = "http://api.liwushuo.com/v2/channels/10/items_v2?gender=1&limit=20&offset=0&generation=1";
+    public static final String SEND_GIRLFREND ="http://api.liwushuo.com/v2/channels/10/items_v2?gender=1&limit=20&offset=0&generation=1";
     /**
      *海淘
      */
@@ -83,7 +83,7 @@ public final class GetUrl {
      * strategy
      */
      public  static  final  String STRATEGY_RV ="http://api.liwushuo.com/v2/columns";
-     public  static  final  String STRATEGY_LV = "http://api.liwushuo.com/v2/channel_groups/all";
+     public  static  final  String STRATEGY_GRIDE = "http://api.liwushuo.com/v2/channel_groups/all";
     /**
      * 单品
      */

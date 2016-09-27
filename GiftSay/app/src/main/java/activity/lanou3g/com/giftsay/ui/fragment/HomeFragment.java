@@ -37,7 +37,7 @@ public class HomeFragment extends AbsBaseFragment {
     private HomeAdpter homeAdpter;
     private List<Fragment> fragments;
     private ImageView indexDownImg;
-    private List<GuidBean.DataBean.CandidatesBean> list;
+    private List<GuidBean.DataBean.ChannelsBean> list;
 
     // 请求队列
     private RequestQueue queue;
@@ -125,7 +125,7 @@ public class HomeFragment extends AbsBaseFragment {
                 Log.d("HomeFragmentURL", resultStr);
                 Gson gson = new Gson();
                 GuidBean bean  = gson.fromJson(resultStr,GuidBean.class);
-                list = bean.getData().getCandidates();
+                list = bean.getData().getChannels();
                 Log.d("HomeFragmentURL", "list.size():" + list.size());
 
                 Log.d("HomeFragmentURL", "list:" + list);

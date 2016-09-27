@@ -25,6 +25,8 @@
 
         <activity android:name=".ui.activity.SelectiveRvInfoActivity"/>
         <activity android:name=".ui.activity.SelectiveLvInfoActivity"/>
+        <activity android:name=".ui.activity.SendGirlFriendActivity"/>
+        <activity android:name=".ui.activity.DayRecomedactivity"/>
     </application>
 
 </manifest>

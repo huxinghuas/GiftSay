@@ -1,7 +1,10 @@
 package activity.lanou3g.com.giftsay.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +19,7 @@ import activity.lanou3g.com.giftsay.R;
 import activity.lanou3g.com.giftsay.modle.bean.SendGirlFrendBean;
 import activity.lanou3g.com.giftsay.modle.net.VolleyResult;
 import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
+import activity.lanou3g.com.giftsay.ui.activity.SendGirlFriendActivity;
 import activity.lanou3g.com.giftsay.ui.adpter.SendGirlFrendAdapter;
 import activity.lanou3g.com.giftsay.ui.app.GiftSayApp;
 
@@ -81,7 +85,18 @@ public class SendGirlFriendFragment extends  AbsBaseFragment {
         });
 
 
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // 根据数据获取具体某一行位置的行布局
+                SendGirlFrendBean.DataBean.ItemsBean bean = (SendGirlFrendBean.DataBean.ItemsBean) parent.getItemAtPosition(position);
+                Intent intent = new Intent(context, SendGirlFriendActivity.class);
+                if (bean.getColumn() !=null){
+                    intent.putExtra("url",bean.getUrl());
+                }
+                startActivity(intent);
+            }
+        });
 
 
 

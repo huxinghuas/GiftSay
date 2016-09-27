@@ -4,6 +4,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,7 +19,7 @@ import activity.lanou3g.com.giftsay.modle.bean.StartegyLvBean;
 import activity.lanou3g.com.giftsay.modle.bean.StartegyRvBean;
 import activity.lanou3g.com.giftsay.modle.net.VolleyResult;
 import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
-import activity.lanou3g.com.giftsay.ui.adpter.StartegyLvAdapter;
+import activity.lanou3g.com.giftsay.ui.adpter.StartegyGrideAdapter;
 import activity.lanou3g.com.giftsay.ui.adpter.StartegyRvAdapter;
 import activity.lanou3g.com.giftsay.view.MyListView;
 
@@ -27,15 +28,17 @@ import activity.lanou3g.com.giftsay.view.MyListView;
  * 这是攻略页面
  */
 public class StartegyFragment extends  AbsBaseFragment {
-    private RecyclerView recyclerView;
 
+    protected RecyclerView recyclerView;
     private List<StartegyRvBean.DataBean.ColumnsBean> datas;
     private StartegyRvAdapter adapter ;
 
 
-    private List<StartegyLvBean.DataBean.ChannelGroupsBean>  list;
-    private StartegyLvAdapter lvAdapter;
-    private MyListView listView;
+    private GridView classGridView,styleGridview,newGridview;
+    private StartegyGrideAdapter grideclassAdapter,gridestyleAdapter,gridenewAdapter;
+    private List<StartegyLvBean.DataBean.ChannelGroupsBean.ChannelsBean> grideclassbean,gridestylebean,gridenewbean;
+
+
 
 
     protected int setLayoout() {
@@ -45,8 +48,9 @@ public class StartegyFragment extends  AbsBaseFragment {
     @Override
     protected void initViews() {
        recyclerView = byView(R.id.startegy_rv);
-        listView = byView(R.id.strartegy_list_view);
-
+        classGridView = byView(R.id.startegy_class_grid);
+        styleGridview = byView(R.id.startegy_style_gride);
+        newGridview = byView(R.id.startegy_new_gride);
     }
 
     @Override
@@ -59,7 +63,7 @@ public class StartegyFragment extends  AbsBaseFragment {
 
     private void getIntentLvData() {
 
-        VolleyeInstance.getInstance().startRequest(GetUrl.STRATEGY_LV, new VolleyResult() {
+        VolleyeInstance.getInstance().startRequest(GetUrl.STRATEGY_GRIDE, new VolleyResult() {
             @Override
             public void success(String resultStr) {
                 // 获取网络数据
@@ -67,10 +71,17 @@ public class StartegyFragment extends  AbsBaseFragment {
                 // 解析
                 Gson gson = new Gson();
                 StartegyLvBean startegyLvBean = gson.fromJson(resultStr,StartegyLvBean.class);
-                list = startegyLvBean.getData().getChannel_groups();
-                Log.d("StartegyFragmentlvss", "list.size():" + list.size());
-                lvAdapter = new StartegyLvAdapter(list,context);
-                listView.setAdapter(lvAdapter);
+                grideclassbean = startegyLvBean.getData().getChannel_groups().get(0).getChannels();
+                gridestylebean = startegyLvBean.getData().getChannel_groups().get(1).getChannels();
+                gridenewbean = startegyLvBean.getData().getChannel_groups().get(2).getChannels();
+                grideclassAdapter = new StartegyGrideAdapter(grideclassbean,context);
+                gridestyleAdapter = new StartegyGrideAdapter(gridestylebean,context);
+                gridenewAdapter = new StartegyGrideAdapter(gridenewbean,context);
+                classGridView.setAdapter(grideclassAdapter);
+                styleGridview.setAdapter(gridestyleAdapter);
+                newGridview.setAdapter(gridenewAdapter);
+
+
 
             }
 

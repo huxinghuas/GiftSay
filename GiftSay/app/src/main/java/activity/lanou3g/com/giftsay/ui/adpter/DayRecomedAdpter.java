@@ -16,6 +16,7 @@ import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
 import activity.lanou3g.com.giftsay.modle.bean.DayRecomedBean;
+import activity.lanou3g.com.giftsay.modle.bean.DayRecomedOnRvItemClick;
 import activity.lanou3g.com.giftsay.tools.ScreenSizeUtil;
 
 /**
@@ -29,7 +30,11 @@ public class DayRecomedAdpter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private List<DayRecomedBean.DataBean.ItemsBean> datas;
     private static final int TYPE_ONE_IMG = 0;// 一张图片
     private static final int TYPE_LIST = 1; // 列表数据
+    private DayRecomedOnRvItemClick onRvItemClick;
 
+    public void setOnRvItemClick(DayRecomedOnRvItemClick onRvItemClick) {
+        this.onRvItemClick = onRvItemClick;
+    }
 
     public DayRecomedAdpter(Context context) {
         this.context = context;
@@ -75,7 +80,7 @@ public class DayRecomedAdpter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
         RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
-        if (manager instanceof GridLayoutManager){
+        if (manager instanceof GridLayoutManager) {
             final GridLayoutManager gridLayoutManager = (GridLayoutManager) manager;
             gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
@@ -88,10 +93,10 @@ public class DayRecomedAdpter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        int type = getItemViewType(position);
-        switch (type){
-            case  TYPE_ONE_IMG:
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
+        final int type = getItemViewType(position);
+        switch (type) {
+            case TYPE_ONE_IMG:
                 DayImgViewHolder imgHolder = (DayImgViewHolder) holder;
                 ViewGroup.LayoutParams params = imgHolder.OnePageImg.getLayoutParams();
                 params.width = ScreenSizeUtil.getScreenWidth(context);
@@ -99,15 +104,37 @@ public class DayRecomedAdpter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 Picasso.with(context).load(imgUrl).into(imgHolder.OnePageImg);
                 break;
             case TYPE_LIST:
-
-              DayListViewHolder listHolder  = (DayListViewHolder) holder;
-                DayRecomedBean.DataBean.ItemsBean itemsBean = datas.get(position-1);
+                final DayListViewHolder listHolder = (DayListViewHolder) holder;
+                DayRecomedBean.DataBean.ItemsBean itemsBean = datas.get(position - 1);
                 Picasso.with(context).load(itemsBean.getCover_image_url()).into(((DayListViewHolder) holder).dayImg);
-                listHolder.contactOneTv.setText(itemsBean.getShort_description());
-                listHolder.contactTwoTv.setText(itemsBean.getName());
-                listHolder.priceTv.setText("¥ "+itemsBean.getPrice());
+                listHolder.contactOneTv.setText(itemsBean.getName());
+                listHolder.contactTwoTv.setText(itemsBean.getShort_description());
+                listHolder.priceTv.setText("¥ " + itemsBean.getPrice());
                 break;
         }
+
+        //  item点击事件
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onRvItemClick != null) {
+                    int type2 = getItemViewType(holder.getLayoutPosition());
+                    switch (type2) {
+                        case TYPE_ONE_IMG:
+                            break;
+                        case TYPE_LIST:
+                            // 获取行布局的位置
+                            int p = holder.getLayoutPosition();
+                            // 获取行布局的数据
+                            DayRecomedBean.DataBean.ItemsBean bean = datas.get(position);
+                            onRvItemClick.OnRvItemClickLisner(p, bean);
+                            break;
+                    }
+
+                }
+            }
+        });
+
 
     }
 

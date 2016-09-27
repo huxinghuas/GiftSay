@@ -8,6 +8,7 @@
 
 
     <ImageView
+        android:layout_marginLeft="5dp"
         android:id="@+id/item_selective_rv_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
