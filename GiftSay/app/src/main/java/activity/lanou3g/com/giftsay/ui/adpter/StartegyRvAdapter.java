@@ -8,12 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
+import activity.lanou3g.com.giftsay.modle.InterFaces.StartgyOnRvitemClick;
 import activity.lanou3g.com.giftsay.modle.bean.StartegyRvBean;
 import activity.lanou3g.com.giftsay.tools.ScreenSizeUtil;
 
@@ -28,7 +30,11 @@ public class StartegyRvAdapter extends RecyclerView.Adapter {
     private List<StartegyRvBean.DataBean.ColumnsBean> datas;
     private static final int TYPE_ONE_TV = 1;// 一张图片
     private static final int TYPE_LIST = 0; // 列表数据
+    private StartgyOnRvitemClick onRvitemClick;
 
+    public void setOnRvitemClick(StartgyOnRvitemClick onRvitemClick) {
+        this.onRvitemClick = onRvitemClick;
+    }
 
     public StartegyRvAdapter(Context context) {
         this.context = context;
@@ -67,7 +73,7 @@ public class StartegyRvAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
 
         int type = getItemViewType(position);
         switch (type) {
@@ -89,6 +95,29 @@ public class StartegyRvAdapter extends RecyclerView.Adapter {
             case TYPE_ONE_TV:
                 break;
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onRvitemClick != null){
+                    int typeclick =  getItemViewType(position);
+                    switch (typeclick){
+                        case TYPE_LIST:
+                            int p = holder.getLayoutPosition();
+                            StartegyRvBean.DataBean.ColumnsBean bean = datas.get(position);
+                            onRvitemClick.StartgyOnRvItemClicListener(p,bean);
+                            break;
+                        case TYPE_ONE_TV:
+                            Toast.makeText(context, "查看全部", Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+
+
+
+                }
+            }
+        });
+
+
     }
 
 

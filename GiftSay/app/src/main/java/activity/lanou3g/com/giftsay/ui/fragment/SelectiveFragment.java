@@ -1,38 +1,31 @@
 package activity.lanou3g.com.giftsay.ui.fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
-import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
-import activity.lanou3g.com.giftsay.modle.bean.SelectOnRvitemClick;
+import activity.lanou3g.com.giftsay.modle.InterFaces.OnRefreshListener;
+import activity.lanou3g.com.giftsay.modle.InterFaces.SelectOnRvitemClick;
 import activity.lanou3g.com.giftsay.modle.bean.SelectiveLvBean;
 import activity.lanou3g.com.giftsay.modle.bean.SelectiveRvBean;
 import activity.lanou3g.com.giftsay.modle.bean.ShufflingBean;
@@ -43,14 +36,13 @@ import activity.lanou3g.com.giftsay.ui.activity.SelectiveRvInfoActivity;
 import activity.lanou3g.com.giftsay.ui.adpter.SelectiveLvAdapter;
 import activity.lanou3g.com.giftsay.ui.adpter.SelectiveRvAdpter;
 import activity.lanou3g.com.giftsay.ui.adpter.ShufflingAdapter;
-import activity.lanou3g.com.giftsay.ui.app.GiftSayApp;
-import activity.lanou3g.com.giftsay.view.MyListView;
+import activity.lanou3g.com.giftsay.view.RefreshListView;
 
 /**
  * Created by dllo on 16/9/9.
  * 精选页面
  */
-public class SelectiveFragment extends AbsBaseFragment {
+public class SelectiveFragment extends AbsBaseFragment  {
     private LinearLayout drawerView;
 
 
@@ -66,7 +58,8 @@ public class SelectiveFragment extends AbsBaseFragment {
     private RecyclerView recyclerView;
     private SelectiveRvAdpter rvadpter;
     // 定义并初始化lv适配器和集合;
-    private ListView listview;
+    private List<SelectiveLvBean.DataBean.ItemsBean> list;
+    private RefreshListView listview;
     private SelectiveLvAdapter lvadpter;
     // 时间更新并初始化
     private TextView timeTv;
@@ -101,6 +94,37 @@ public class SelectiveFragment extends AbsBaseFragment {
         getOnLvItemclick();
         // 头布局方法
         getHead();
+        listview.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onDownPullRefresh() {
+
+                new AsyncTask<Void,Void,Void>(){
+
+                    @Override
+                    protected Void doInBackground(Void... params) {
+                        SystemClock.sleep(5000);
+
+                        return null;
+                    }
+
+                    @Override
+                    protected void onPostExecute(Void aVoid) {
+                        // super.onPostExecute(aVoid);
+                        lvadpter.notifyDataSetChanged();
+                        listview.hideHeaderView();
+
+                    }
+                }.execute(new Void[]{});
+
+
+
+
+
+//                getLvitem();
+//                Toast.makeText(context, "刷新成功", Toast.LENGTH_SHORT).show();
+//                listview.hideHeaderView();
+            }
+        });
     }
 
 
@@ -121,6 +145,7 @@ public class SelectiveFragment extends AbsBaseFragment {
         // 获取本地时间
           itemAndUpdate();
         listview.addHeaderView(headView);
+
     }
 
 
@@ -344,6 +369,9 @@ public class SelectiveFragment extends AbsBaseFragment {
     private void getLvitem() {
         lvadpter = new SelectiveLvAdapter(context);
         VolleyeInstance.getInstance().startRequest(dataLv, new VolleyResult() {
+
+
+
             @Override
             public void success(String resultStr) {
                 // 获取网络
@@ -353,10 +381,11 @@ public class SelectiveFragment extends AbsBaseFragment {
                 SelectiveLvBean lvbean = gson.fromJson(resultStr, SelectiveLvBean.class);
                 // 获取数据添加到集合
 
-                List<SelectiveLvBean.DataBean.ItemsBean> list = lvbean.getData().getItems();
+                list = lvbean.getData().getItems();
                 Log.d("xxx", "datas.size():" + list.size());
                 lvadpter.setDatas(list);
                 listview.setAdapter(lvadpter);
+
 
             }
 
@@ -366,4 +395,7 @@ public class SelectiveFragment extends AbsBaseFragment {
             }
         });
     }
+
+
+
 }

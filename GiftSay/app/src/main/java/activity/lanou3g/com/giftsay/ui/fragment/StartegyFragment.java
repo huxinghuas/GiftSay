@@ -1,5 +1,6 @@
 package activity.lanou3g.com.giftsay.ui.fragment;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -14,11 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
+import activity.lanou3g.com.giftsay.modle.InterFaces.StartgyOnRvitemClick;
 import activity.lanou3g.com.giftsay.modle.bean.GetUrl;
 import activity.lanou3g.com.giftsay.modle.bean.StartegyLvBean;
 import activity.lanou3g.com.giftsay.modle.bean.StartegyRvBean;
 import activity.lanou3g.com.giftsay.modle.net.VolleyResult;
 import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
+import activity.lanou3g.com.giftsay.ui.activity.StartegyRvInfoAcitvity;
 import activity.lanou3g.com.giftsay.ui.adpter.StartegyGrideAdapter;
 import activity.lanou3g.com.giftsay.ui.adpter.StartegyRvAdapter;
 import activity.lanou3g.com.giftsay.view.MyListView;
@@ -110,6 +114,15 @@ public class StartegyFragment extends  AbsBaseFragment {
                StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.HORIZONTAL);
                // LinearLayoutManager manager = new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false);
                 recyclerView.setLayoutManager(manager);
+                adapter.setOnRvitemClick(new StartgyOnRvitemClick() {
+                    @Override
+                    public void StartgyOnRvItemClicListener(int position, StartegyRvBean.DataBean.ColumnsBean bean) {
+                        Intent intent = new Intent(context, StartegyRvInfoAcitvity.class);
+
+
+                    }
+                });
+
             }
 
             @Override

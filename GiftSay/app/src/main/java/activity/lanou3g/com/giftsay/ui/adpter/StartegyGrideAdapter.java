@@ -29,7 +29,7 @@ public class StartegyGrideAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return datas == null ? 0 : datas.size();
+        return datas == null ? 0 : 6;
     }
 
     @Override

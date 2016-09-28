@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
-import activity.lanou3g.com.giftsay.modle.bean.SelectOnRvitemClick;
+import activity.lanou3g.com.giftsay.modle.InterFaces.SelectOnRvitemClick;
 import activity.lanou3g.com.giftsay.modle.bean.SelectiveRvBean;
 import activity.lanou3g.com.giftsay.tools.ScreenSizeUtil;
 
@@ -78,7 +78,6 @@ public class SelectiveRvAdpter  extends  RecyclerView.Adapter<SelectiveRvAdpter.
                     int p = holder.getLayoutPosition();
                     // 获取当前行布局的数据
                     SelectiveRvBean.DataBean.SecondaryBannersBean str  = datas.get(position);
-
                     onRvitemClick.onRvItemClickListener(p,str);
                 }
 

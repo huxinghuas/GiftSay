@@ -1,4 +1,6 @@
-package activity.lanou3g.com.giftsay.modle.bean;
+package activity.lanou3g.com.giftsay.modle.InterFaces;
+
+import activity.lanou3g.com.giftsay.modle.bean.DayRecomedBean;
 
 /**
  * Created by dllo on 16/9/26.

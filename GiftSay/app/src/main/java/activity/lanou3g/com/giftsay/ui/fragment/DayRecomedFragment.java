@@ -3,29 +3,20 @@ package activity.lanou3g.com.giftsay.ui.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
 import activity.lanou3g.com.giftsay.modle.bean.DayRecomedBean;
-import activity.lanou3g.com.giftsay.modle.bean.DayRecomedOnRvItemClick;
+import activity.lanou3g.com.giftsay.modle.InterFaces.DayRecomedOnRvItemClick;
 import activity.lanou3g.com.giftsay.modle.net.VolleyResult;
 import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
 import activity.lanou3g.com.giftsay.ui.activity.DayRecomedactivity;
 import activity.lanou3g.com.giftsay.ui.adpter.DayRecomedAdpter;
-import activity.lanou3g.com.giftsay.ui.fragment.AbsBaseFragment;
-import activity.lanou3g.com.giftsay.view.MyRecyvleView;
 
 /**
  * Created by dllo on 16/9/9.
@@ -92,7 +83,6 @@ public class DayRecomedFragment extends AbsBaseFragment {
            @Override
            public void OnRvItemClickLisner(int position, DayRecomedBean.DataBean.ItemsBean bean) {
 
-               DayRecomedBean.DataBean.ItemsBean imgbean = bean;
                // 获取网络图片网址
                String imgUrl = bean.getUrl();
                // 设置inttent

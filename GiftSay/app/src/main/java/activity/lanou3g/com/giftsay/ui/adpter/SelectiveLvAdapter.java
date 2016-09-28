@@ -61,9 +61,9 @@ public class SelectiveLvAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_selective_listview, parent, false);
             holder = new MyViewHolder(convertView);
-            int height = ScreenSizeUtil.getScreenHeight(context);
+            float height = ScreenSizeUtil.getScreenHeight(context);
             ViewGroup.LayoutParams params = convertView.getLayoutParams();
-            params.height = (int) (height / 2);
+            params.height = (int) (height / 2.2);
             convertView.setLayoutParams(params);
             convertView.setTag(holder);
         } else {

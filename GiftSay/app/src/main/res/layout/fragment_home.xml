@@ -8,6 +8,7 @@
 
 
     <LinearLayout
+        android:id="@+id/home_title_layout"
         android:weightSum="5"
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -76,9 +77,11 @@
         android:orientation="horizontal">
 
         <android.support.design.widget.TabLayout
+
             android:id="@+id/home_tab"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:background="#fff"
             android:layout_weight="8"
             app:tabSelectedTextColor="#DC3443" />
 
@@ -87,7 +90,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center">
+            android:gravity="center"
+            android:background="#fff"
+            >
 
             <ImageView
                 android:id="@+id/home_arrow_index_down"
