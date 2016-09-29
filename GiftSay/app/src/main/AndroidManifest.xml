@@ -27,6 +27,8 @@
         <activity android:name=".ui.activity.SelectiveLvInfoActivity"/>
         <activity android:name=".ui.activity.SendGirlFriendActivity"/>
         <activity android:name=".ui.activity.DayRecomedactivity"/>
+        <activity android:name=".ui.activity.StartegyRvInfoAcitvity"/>
+        <activity android:name=".ui.activity.StartegySeachAllInfoActivity"/>
     </application>
 
 </manifest>

@@ -88,4 +88,8 @@ public final class GetUrl {
      * 单品
      */
     public  static  final  String SINGLE_PRODUCT = "http://api.liwushuo.com/v2/item_categories/tree";
+    /**
+     * 攻略详情
+     */
+    public  static  final String STRATEGY_INFO ="http://api.liwushuo.com/v2/columns?limit=20&offset=0";
 }

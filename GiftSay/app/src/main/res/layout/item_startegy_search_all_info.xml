@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/item_startegy_info_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcherss"
+            android:layout_margin="5dp"
+            android:scaleType="centerCrop"
+
+            />
+
+        <TextView
+            android:id="@+id/item_startegy_title_info_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#0d0c0c"
+            android:text="文具集中营"
+            android:layout_toRightOf="@+id/item_startegy_info_img"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="14sp"
+            />
+
+        <TextView
+            android:id="@+id/item_startegy_contact_info_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="内容"
+            android:textSize="12sp"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/item_startegy_info_img"
+            android:layout_below="@+id/item_startegy_title_info_tv"
+
+            />
+
+        <TextView
+            android:id="@+id/item_startegy_author_info_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="12sp"
+            android:text="作者"
+            android:layout_toRightOf="@+id/item_startegy_info_img"
+            android:layout_below="@+id/item_startegy_contact_info_tv"
+
+            />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:background="@drawable/startgy_shape"
+            android:text="+ 关注"
+            android:textSize="15sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:textColor="#f03"
+            />
+
+
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

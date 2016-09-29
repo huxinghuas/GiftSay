@@ -1,13 +1,19 @@
 package activity.lanou3g.com.giftsay.ui.activity;
 
 import android.content.Intent;
+import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.TextView;
 
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+
+import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
+import activity.lanou3g.com.giftsay.modle.bean.SelectiveLVInfoBean;
 import activity.lanou3g.com.giftsay.modle.net.VolleyResult;
 import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
 
@@ -18,9 +24,16 @@ import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
 public class SelectiveLvInfoActivity extends AbsBaseActivity {
 
 
+    private TextView fomalTv,shareTv,contenTv;
 
-//    String urlStart = "http://www.liwushuo.com/posts/";
-    String urlMiddle;
+
+
+    String urlStart = "http://api.liwushuo.com/v2/posts_v2/";
+    int urlMiddle ;
+
+
+
+    String url;
 
 
     private  WebView webView;
@@ -31,6 +44,9 @@ public class SelectiveLvInfoActivity extends AbsBaseActivity {
     @Override
     protected void initView() {
         webView = byview(R.id.selecive_lv_webview);
+        fomalTv = byview(R.id.selcetive_lv_info_normal);
+        shareTv = byview(R.id.selective_lv_info_share);
+        contenTv = byview(R.id.selective_lv_info_comment);
     }
 
     @Override
@@ -38,10 +54,11 @@ public class SelectiveLvInfoActivity extends AbsBaseActivity {
 
         Intent intent = getIntent();
         if (intent != null) {
-            urlMiddle = intent.getStringExtra("id");
+            url = intent.getStringExtra("url");
+            urlMiddle = intent.getIntExtra("id",0);
         }
-     //   String url = urlStart + urlMiddle;
 
+        String finalUrl = urlStart + urlMiddle;
 
         WebSettings webSettings = webView.getSettings();
         // 让WebView能够执行javaScript
@@ -66,7 +83,7 @@ public class SelectiveLvInfoActivity extends AbsBaseActivity {
         // 设置默认字体大小
         webSettings.setDefaultFontSize(12);
 
-        webView.loadUrl(urlMiddle);
+        webView.loadUrl(url);
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -75,7 +92,22 @@ public class SelectiveLvInfoActivity extends AbsBaseActivity {
         });
 
 
+    VolleyeInstance.getInstance().startRequest(finalUrl, new VolleyResult() {
+        @Override
+        public void success(String resultStr) {
+            Log.d("SelectiveLvInfoActivity", resultStr);
+            Gson gson = new Gson();
+            SelectiveLVInfoBean infoBean= gson.fromJson(resultStr,SelectiveLVInfoBean.class);
+            fomalTv.setText(infoBean.getData().getLikes_count()+"");
+            shareTv.setText(infoBean.getData().getShares_count()+"");
+            contenTv.setText(infoBean.getData().getComments_count()+"");
+        }
 
+        @Override
+        public void failure() {
+
+        }
+    });
 
 
 

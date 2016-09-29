@@ -157,7 +157,8 @@ public class SelectiveFragment extends AbsBaseFragment  {
                 SelectiveLvBean.DataBean.ItemsBean bean = (SelectiveLvBean.DataBean.ItemsBean) parent.getItemAtPosition(position);
                 Intent intent = new Intent(context, SelectiveLvInfoActivity.class);
                 if (bean.getColumn() != null) {
-                    intent.putExtra("id", bean.getUrl());
+                    intent.putExtra("url", bean.getUrl());
+                    intent.putExtra("id",bean.getId());
                 }
                 startActivity(intent);
             }
@@ -380,7 +381,6 @@ public class SelectiveFragment extends AbsBaseFragment  {
                 Gson gson = new Gson();
                 SelectiveLvBean lvbean = gson.fromJson(resultStr, SelectiveLvBean.class);
                 // 获取数据添加到集合
-
                 list = lvbean.getData().getItems();
                 Log.d("xxx", "datas.size():" + list.size());
                 lvadpter.setDatas(list);

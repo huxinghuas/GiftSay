@@ -126,7 +126,7 @@ public class DayRecomedAdpter extends RecyclerView.Adapter<RecyclerView.ViewHold
                             // 获取行布局的位置
                             int p = holder.getLayoutPosition();
                             // 获取行布局的数据
-                            DayRecomedBean.DataBean.ItemsBean bean = datas.get(position);
+                            DayRecomedBean.DataBean.ItemsBean bean = datas.get(position-1);
                             onRvItemClick.OnRvItemClickLisner(p, bean);
                             break;
                     }

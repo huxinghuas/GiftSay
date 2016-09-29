@@ -23,6 +23,7 @@ import activity.lanou3g.com.giftsay.modle.bean.StartegyRvBean;
 import activity.lanou3g.com.giftsay.modle.net.VolleyResult;
 import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
 import activity.lanou3g.com.giftsay.ui.activity.StartegyRvInfoAcitvity;
+import activity.lanou3g.com.giftsay.ui.activity.StartegySeachAllInfoActivity;
 import activity.lanou3g.com.giftsay.ui.adpter.StartegyGrideAdapter;
 import activity.lanou3g.com.giftsay.ui.adpter.StartegyRvAdapter;
 import activity.lanou3g.com.giftsay.view.MyListView;
@@ -117,7 +118,19 @@ public class StartegyFragment extends  AbsBaseFragment {
                 adapter.setOnRvitemClick(new StartgyOnRvitemClick() {
                     @Override
                     public void StartgyOnRvItemClicListener(int position, StartegyRvBean.DataBean.ColumnsBean bean) {
-                        Intent intent = new Intent(context, StartegyRvInfoAcitvity.class);
+                        switch (adapter.getItemViewType(position)) {
+                            case 0:
+                                Intent intentDetail = new Intent(context, StartegyRvInfoAcitvity.class);
+                                intentDetail.putExtra("url",bean.getId()+"");
+                                Log.d("StartegyFragment", "bean.getId():" + bean.getId());
+                                startActivity(intentDetail);
+                                break;
+                            case 1:
+                                Intent intent = new Intent(context, StartegySeachAllInfoActivity.class);
+                                startActivity(intent);
+                                break;
+
+                        }
 
 
                     }

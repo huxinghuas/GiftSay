@@ -1,6 +1,7 @@
 package activity.lanou3g.com.giftsay.ui.adpter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import activity.lanou3g.com.giftsay.R;
 import activity.lanou3g.com.giftsay.modle.InterFaces.StartgyOnRvitemClick;
 import activity.lanou3g.com.giftsay.modle.bean.StartegyRvBean;
 import activity.lanou3g.com.giftsay.tools.ScreenSizeUtil;
+import activity.lanou3g.com.giftsay.ui.activity.StartegySeachAllInfoActivity;
 
 /**
  * Created by dllo on 16/9/16.
@@ -98,22 +100,12 @@ public class StartegyRvAdapter extends RecyclerView.Adapter {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onRvitemClick != null){
-                    int typeclick =  getItemViewType(position);
-                    switch (typeclick){
-                        case TYPE_LIST:
-                            int p = holder.getLayoutPosition();
-                            StartegyRvBean.DataBean.ColumnsBean bean = datas.get(position);
-                            onRvitemClick.StartgyOnRvItemClicListener(p,bean);
-                            break;
-                        case TYPE_ONE_TV:
-                            Toast.makeText(context, "查看全部", Toast.LENGTH_SHORT).show();
-                            break;
-                    }
-
-
-
+                int p = holder.getLayoutPosition();
+                StartegyRvBean.DataBean.ColumnsBean bean = null;
+                if (p < datas.size()) {
+                    bean = datas.get(position);
                 }
+                onRvitemClick.StartgyOnRvItemClicListener(p, bean);
             }
         });
 
