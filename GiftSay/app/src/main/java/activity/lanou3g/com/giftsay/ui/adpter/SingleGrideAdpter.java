@@ -18,7 +18,7 @@ import activity.lanou3g.com.giftsay.modle.bean.SingleProductBean;
 
 /**
  * Created by dllo on 16/9/22.
- * 单品grideView适配器
+ * 单品右边grideView适配器
  */
 public class SingleGrideAdpter extends BaseAdapter {
 

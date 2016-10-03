@@ -1,16 +1,19 @@
 package activity.lanou3g.com.giftsay.ui.adpter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -19,6 +22,7 @@ import java.util.List;
 
 import activity.lanou3g.com.giftsay.R;
 import activity.lanou3g.com.giftsay.modle.bean.SingleProductBean;
+import activity.lanou3g.com.giftsay.ui.activity.SingleProductInfoActivity;
 import activity.lanou3g.com.giftsay.view.MyGridView;
 
 /**
@@ -93,6 +97,14 @@ public class SingleProducRightAdpter extends BaseAdapter {
         list = bean.getSubcategories();
         holder.adpter.setDatas(list);
        holder.gridView.setAdapter(holder.adpter);
+
+        holder.gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(context, SingleProductInfoActivity.class);
+               context.startActivity(intent);
+            }
+        });
 
         return convertView;
     }

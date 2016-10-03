@@ -27,8 +27,9 @@ public class SelectiveLvInfoActivity extends AbsBaseActivity {
     private TextView fomalTv,shareTv,contenTv;
 
 
-
+    String urlStart1 = "http://www.liwushuo.com/posts/";
     String urlStart = "http://api.liwushuo.com/v2/posts_v2/";
+    // http://api.liwushuo.com/v2/posts_v2/1045865
     int urlMiddle ;
 
 

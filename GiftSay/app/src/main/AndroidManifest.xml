@@ -29,6 +29,14 @@
         <activity android:name=".ui.activity.DayRecomedactivity"/>
         <activity android:name=".ui.activity.StartegyRvInfoAcitvity"/>
         <activity android:name=".ui.activity.StartegySeachAllInfoActivity"/>
+        <activity android:name=".ui.activity.StartegyClassGridInfoActivity"/>
+        <activity android:name=".ui.activity.StartegyClassGrideAllActivity"/>
+        <activity android:name=".ui.activity.StartegyNewGrideAllActivity"/>
+        <activity android:name=".ui.activity.StartegyStyleGridInfoActivity"/>
+        <activity android:name=".ui.activity.StartegyNewGridInfoActivity"/>
+        <activity android:name=".ui.activity.SingleProductInfoActivity"/>
+        <activity android:name=".ui.activity.LogInActivity"/>
+
     </application>
 
 </manifest>

@@ -57,7 +57,7 @@ public class StartegyRvAdapter extends RecyclerView.Adapter {
                 float width = ScreenSizeUtil.getScreenWidth(context);
                 float height = ScreenSizeUtil.getScreenHeight(context);
                 ViewGroup.LayoutParams params = view.getLayoutParams();
-                params.height = (int) (height / 7.5);
+                params.height = (int) (height / 6.5);
                 params.width = (int) (width / 1.5);
                 view.setLayoutParams(params);
                 MyViewHodler hodler = new MyViewHodler(view);
@@ -90,7 +90,7 @@ public class StartegyRvAdapter extends RecyclerView.Adapter {
                 float width = ScreenSizeUtil.getScreenWidth(context);
                 float height = ScreenSizeUtil.getScreenHeight(context);
                 ViewGroup.LayoutParams params = hodlers.img.getLayoutParams();
-                params.width = (int) (width / 3.1);
+                params.width = (int) (width / 2.5);
                 hodlers.img.setLayoutParams(params);
                 break;
 

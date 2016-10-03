@@ -1,5 +1,6 @@
 package activity.lanou3g.com.giftsay.ui.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.Log;
@@ -57,6 +58,8 @@ public class SingleProductFragment extends AbsBaseFragment {
 
         getIntentUrl();
         onclik();
+
+
 
     }
 

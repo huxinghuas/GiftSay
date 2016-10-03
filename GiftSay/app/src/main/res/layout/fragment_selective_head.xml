@@ -67,7 +67,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_centerInParent="true"
+               android:layout_marginTop="17dp"
                 android:background="#dfdfdfdf" />
 
 
@@ -75,26 +75,30 @@
                 android:id="@+id/select_four_item_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="10dp"
                 android:background="#ffff"
                 android:text="    9月1日 星期日    "
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/select_four_item_time"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
                 android:text="下次更新8:00"
                 android:textColor="#f03"
-                android:textSize="8sp" />
+                android:textSize="10sp" />
 
 
         </RelativeLayout>
 
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:background="#fff"/>
 
         <View
             android:layout_width="match_parent"
@@ -104,9 +108,6 @@
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#dedcdc" />
+
 
 </LinearLayout>

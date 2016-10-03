@@ -46,7 +46,7 @@ public class StartegySeachAllInfoAdapter  extends  RecyclerView.Adapter<Startegy
         float width = ScreenSizeUtil.getScreenWidth(context);
         float height = ScreenSizeUtil.getScreenHeight(context);
         ViewGroup.LayoutParams params = holder.allImg.getLayoutParams();
-        params.width = (int) (width / 2.8);
+        params.width = (int) (width / 3);
         params.height = (int) (height/7);
         holder.allImg.setLayoutParams(params);
         holder.allAuthorTv.setText(datas.get(position).getAuthor());

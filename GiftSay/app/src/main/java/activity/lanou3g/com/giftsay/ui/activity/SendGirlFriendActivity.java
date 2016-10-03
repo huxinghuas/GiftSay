@@ -1,6 +1,7 @@
 package activity.lanou3g.com.giftsay.ui.activity;
 
 import android.content.Intent;
+import android.util.Log;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -26,12 +27,13 @@ public class SendGirlFriendActivity  extends  AbsBaseActivity {
 
     @Override
     protected void initDatas() {
-
         Intent intent = getIntent();
-        urlend = intent.getStringExtra("url");
-
+        if (intent != null){
+            urlend = intent.getStringExtra("url");
+        }
         WebSettings webSettings =  girleWeb.getSettings();
         webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        Log.d("SendGirlFriendActivity", urlend);
         girleWeb.loadUrl(urlend);
         girleWeb.setWebViewClient(new WebViewClient(){
             @Override

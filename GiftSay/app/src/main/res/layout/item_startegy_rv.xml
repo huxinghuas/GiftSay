@@ -24,7 +24,7 @@
                 android:textColor="#0d0c0c"
                 android:text="文具集中营"
                 android:layout_toRightOf="@+id/item_startegy_img"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginLeft="5dp"
                 android:textSize="14sp"
                 />

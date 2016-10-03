@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -56,7 +57,7 @@ public class ShufflingAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         // position是int最大值所以这里可能是几百甚至上千,因此取余避免数组越界
 
-        int newPositon = position % datas.size();
+        final int newPositon = position % datas.size();
         View convertView = inflater.inflate(R.layout.item_shuffing_img, container, false);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.item_shuffling_imgaview);
         Log.d("ShufflingAdapter", "datas:" + datas.get(newPositon).getId());
@@ -66,7 +67,19 @@ public class ShufflingAdapter extends PagerAdapter {
 //        ViewGroup.LayoutParams params = convertView.getLayoutParams();
 //        params.height = (int) height / 3;
 //        convertView.setLayoutParams(params);
-        container.addView(convertView);
+          container.addView(convertView);
+          convertView.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  if (datas.get(newPositon).getTarget_id() != 0){
+                      Toast.makeText(context, "图片", Toast.LENGTH_SHORT).show();
+                  }else {
+                      Toast.makeText(context, "heh", Toast.LENGTH_SHORT).show();
+                  }
+
+              }
+          });
+
         return convertView;
 
     }

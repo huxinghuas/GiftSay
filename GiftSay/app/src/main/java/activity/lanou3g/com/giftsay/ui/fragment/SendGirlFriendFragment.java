@@ -19,6 +19,7 @@ import activity.lanou3g.com.giftsay.R;
 import activity.lanou3g.com.giftsay.modle.bean.SendGirlFrendBean;
 import activity.lanou3g.com.giftsay.modle.net.VolleyResult;
 import activity.lanou3g.com.giftsay.modle.net.VolleyeInstance;
+import activity.lanou3g.com.giftsay.ui.activity.SelectiveLvInfoActivity;
 import activity.lanou3g.com.giftsay.ui.activity.SendGirlFriendActivity;
 import activity.lanou3g.com.giftsay.ui.adpter.SendGirlFrendAdapter;
 import activity.lanou3g.com.giftsay.ui.app.GiftSayApp;
@@ -90,9 +91,11 @@ public class SendGirlFriendFragment extends  AbsBaseFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // 根据数据获取具体某一行位置的行布局
                 SendGirlFrendBean.DataBean.ItemsBean bean = (SendGirlFrendBean.DataBean.ItemsBean) parent.getItemAtPosition(position);
-                Intent intent = new Intent(context, SendGirlFriendActivity.class);
+                Intent intent = new Intent(context, SelectiveLvInfoActivity.class);
                 if (bean.getColumn() !=null){
                     intent.putExtra("url",bean.getUrl());
+                    intent.putExtra("id",bean.getId());
+
                 }
                 startActivity(intent);
             }

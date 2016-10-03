@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -23,6 +24,7 @@ import activity.lanou3g.com.giftsay.ui.adpter.StartegySeachAllInfoAdapter;
 public class StartegySeachAllInfoActivity extends AbsBaseActivity {
     private RecyclerView  recyclerView;
     private StartegySeachAllInfoAdapter adapter;
+    private TextView titleTv;
 
 
     @Override
@@ -33,6 +35,7 @@ public class StartegySeachAllInfoActivity extends AbsBaseActivity {
     @Override
     protected void initView() {
         recyclerView  = byview(R.id.startegy_search_all_rv);
+        titleTv = byview(R.id.list_tv);
     }
 
     @Override

@@ -16,6 +16,7 @@ import activity.lanou3g.com.giftsay.modle.InterFaces.PopWindowOnRvItemClick;
 
 /**
  * Created by dllo on 16/9/27.
+ * popwindow适配器
  */
 public class PopWindowAdapter extends RecyclerView.Adapter<PopWindowAdapter.PopWindowViewHolder> {
 

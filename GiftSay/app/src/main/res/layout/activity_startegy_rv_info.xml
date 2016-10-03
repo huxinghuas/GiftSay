@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--攻略界面Rv布局-->
+<!--攻略界面详情页面Rv布局-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
 
-    <WebView
-        android:id="@+id/startegy_rv_webview"
+    <ListView
+        android:id="@+id/startegy_rv_info_lv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        >
+    </ListView>
+
+
 
 </LinearLayout>

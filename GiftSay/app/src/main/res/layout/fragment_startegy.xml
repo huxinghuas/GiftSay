@@ -39,6 +39,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/startegy_rv_check_all_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -102,6 +103,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/stategy_class_gride_all_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -233,6 +235,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/stategy_new_gride_all_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"

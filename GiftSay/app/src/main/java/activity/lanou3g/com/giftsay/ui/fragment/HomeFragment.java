@@ -1,5 +1,6 @@
 package activity.lanou3g.com.giftsay.ui.fragment;
 
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -46,6 +47,7 @@ public class HomeFragment extends AbsBaseFragment {
     private List<GuidBean.DataBean.ChannelsBean> list;
     private PopWindowAdapter windowAdapter;
     private RecyclerView popWindowRv;
+    private ImageView popWinddowIndexUpImg;
 
 
     // 请求队列
@@ -152,17 +154,26 @@ public class HomeFragment extends AbsBaseFragment {
         indexDownImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Toast.makeText(context, "点击了", Toast.LENGTH_SHORT).show();
                 final PopupWindow pw = new PopupWindow(context);
                 pw.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
                 pw.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
                 View v1 = getLayoutInflater(getArguments()).inflate(R.layout.home_pop_window, null);
                 popWindowRv = (RecyclerView) v1.findViewById(R.id.pop_window_rv);
+                popWinddowIndexUpImg = (ImageView) v1.findViewById(R.id.pop_window_index_up);
+
                 pw.setContentView(v1);
+                pw.setBackgroundDrawable(new BitmapDrawable());
                 pw.setOutsideTouchable(true);
                 pw.setFocusable(true);
-                pw.showAsDropDown(homeTab);
+                pw.showAsDropDown(linearLayout);
+
+                popWinddowIndexUpImg.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        pw.dismiss();
+                    }
+                });
+
                 pw.setOnDismissListener(new PopupWindow.OnDismissListener() {
                     @Override
                     public void onDismiss() {
@@ -171,12 +182,11 @@ public class HomeFragment extends AbsBaseFragment {
                 });
 
                 indexDownImg.setImageResource(R.mipmap.arrow_index_up);
-
-                Log.d("qqq", "windowAdapter:" + windowAdapter);
-                Log.d("qqq", "popWindowRv:" + popWindowRv);
                 popWindowRv.setAdapter(windowAdapter);
                 GridLayoutManager manager = new GridLayoutManager(context, 4);
                 popWindowRv.setLayoutManager(manager);
+
+
 
                 windowAdapter.setOnRvItemClick(new PopWindowOnRvItemClick() {
                     @Override
@@ -185,12 +195,15 @@ public class HomeFragment extends AbsBaseFragment {
                         windowAdapter.setSelectIndex(position);
                         pw.dismiss();
 
+
                     }
                 });
 
             }
 
         });
+
+
 
 
     }
